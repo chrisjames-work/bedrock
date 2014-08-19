@@ -165,6 +165,12 @@ urlpatterns = patterns('',
     page('contact/communities/uganda', 'mozorg/contact/communities/uganda.html'),
     page('contact/communities/zimbabwe', 'mozorg/contact/communities/zimbabwe.html'),
 
+    page('volunteer', 'mozorg/volunteer/index.html'),
+    page('volunteer/inquiry', 'mozorg/volunteer/inquiry.html'),
+    page('volunteer/confirm', 'mozorg/volunteer/confirm.html'),
+    page('volunteer/events', 'mozorg/volunteer/events.html'),
+    page('volunteer/stories', 'mozorg/volunteer/stories.html'),
+
     url('^contribute/$', views.contribute, name='mozorg.contribute',
         kwargs={'template': 'mozorg/contribute.html',
                 'return_to_form': False}),

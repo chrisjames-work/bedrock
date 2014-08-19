@@ -402,6 +402,14 @@ MINIFY_BUNDLES = {
         'tabzilla': (
             'css/tabzilla/tabzilla.less',
         ),
+        'volunteer': (
+            'css/base/mozilla-modal.less',
+            'css/mozorg/volunteer.less',
+        ),
+        'volunteer-map': (
+            'css/libs/mapbox-1.6.3.css',
+            'css/mozorg/volunteer.less',
+        ),
         'video': (
             'css/sandstone/video.less',
         ),
@@ -712,6 +720,15 @@ MINIFY_BUNDLES = {
         ),
         'video': (
             'js/base/mozilla-video-tools.js',
+        ),
+        'volunteer': (
+            'js/libs/jquery.cycle2.min.js',
+            'js/base/mozilla-modal.js',
+            'js/mozorg/volunteer.js',
+        ),
+        'volunteer-map': (
+            'js/libs/mapbox-1.6.3.js',
+            'js/mozorg/volunteer-map.js',
         ),
         'mosaic': (
             'js/libs/modernizr.custom.26887.js',

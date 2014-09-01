@@ -1,0 +1,555 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{% extends "mozorg/base-resp.html" %}
+
+{% add_lang_files "mozorg/home" "mwc2014_promos" %}
+
+{% from 'macros.html' import facebook_share_url, twitter_share_url %}
+
+{% block page_title %}{{_('Home of the Mozilla Project')}}{% endblock %}
+{% block body_id %}home{% endblock %}
+{% block body_class %}lang-{{ LANG }}{% endblock %}
+
+{% block extra_meta %}
+<!-- validates bing webmaster tools -->
+<meta name="msvalidate.01" content="B7B177115A634927D608514DA17B2574" />
+<!-- YouTube Verification -->
+<meta name="google-site-verification" content="Mef8xJZ1-faaN2AdGdCfRFo5VeoXOSxjXNIzMsxcx94" />
+{% endblock %}
+
+{% block string_data %}{% endblock %}
+
+{% block extrahead %}
+  {{ css('home-voices') }}
+  <!--[if lte IE 8]>
+    {{ css('home-voices-ie') }}
+  <![endif]-->
+{% endblock %}
+
+{% block js %}
+  <!--[if IE 9]>
+    {{ js('home-voices-ie9') }}
+  <![endif]-->
+  {{ js('home-voices') }}
+{% endblock %}
+
+{% block site_header %}{% endblock %}
+
+{% block content %}
+<main role="main">
+  <header id="masthead">
+    <h1>{{ high_res_img('img/home/voices/mozilla-wordmark-white.png', {'alt': 'Mozilla', 'width': '315', 'height': '90'}) }}</h1>
+    <div class="container">
+      <a href="{{ url('mozorg.home') }}" id="tabzilla" data-infobar="{{ settings.TABZILLA_INFOBAR_OPTIONS }}">Mozilla</a>
+
+      <nav id="nav-main" role="navigation">
+        <span class="toggle" role="button" aria-controls="nav-main-menu" aria-expanded="false" tabindex="0" data-break-point="820">{{_('Menu')}}</span>
+        <ul id="nav-main-menu">
+          <li><a href="{{ url('mozorg.contribute') }}">{{_('Volunteer')}}</a></li>
+          <li><a href="{{ url('mozorg.mission') }}">{{_('Our Mission')}}</a></li>
+          <li><a href="#">{{_('The Open Standard')}}</a></li>
+          <li><a href="{{ url('firefox.desktop.index') }}">{{_('Firefox')}}</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div id="welcome-overlay"></div>
+  </header>
+
+  <section class="promo-grid-wrapper">
+    <div class="promo-grid-inner">
+      <ul class="promo-grid">
+        <li class="item promo-large-portrait voices-open-web" tabindex="0">
+          <h2 class="primary go">{{ _('See why <br>open systems matter') }}</h2>
+          <a href="#">
+            <div class="secondary">
+              <h3>{{ _('Learn <br>about the issues facing the Internet today.') }}</h3>
+              <p class="more">{{ _('Read the Open Standard') }}</p>
+            </div>
+          </a>
+        </li>
+        <li class="item promo-small-landscape webmaker">
+          <a href="https://webmaker.org/">
+            <h2>{{ _('Become a Webmaker today') }}</h2>
+            <img src="{{ media('img/home/voices/promos/webmaker/webmaker-logo.png') }}?08-09-2014" alt="">
+          </a>
+        </li>
+        <li class="item promo-face">
+          <a href="https://mozillians.org/u/malexis/" class="malexis">{{ _('Mozillian') }}</a>
+        </li>
+        <li class="item promo-face">
+          <a href="https://mozillians.org/u/deimidis/" class="deimidis">{{ _('Mozillian') }}</a>
+        </li>
+        <li class="item promo-small-landscape firefox-download" tabindex="0">
+          <div class="primary">
+            <h2 class="go">{{ _('Download Firefox') }}</h2>
+            <img src="{{ media('img/home/voices/promos/download-firefox/firefox-logo.png') }}" alt="">
+          </div>
+          <div class="secondary">
+            {{ download_firefox(simple=true) }}
+          </div>
+        </li>
+        <li class="item promo-large-landscape festival" tabindex="0">
+          <h2 class="primary go">{{ _('Help us build a <br>truly global Web') }}</h2>
+          <a href="http://2014.mozillafestival.org/">
+            <div class="secondary">
+              <h3>{{ _('Join us October 24–26 to help make a Web filled with <br>opportunity for all.') }}</h3>
+              <p class="more">{{ _('Come to the Mozilla Festival') }}</p>
+            </div>
+          </a>
+        </li>
+        <li class="item promo-face space-left">
+          <a href="#" class="face-01">{{ _('Mozillian') }}</a>
+        </li>
+        <li class="item promo-small-landscape advocacy">
+          <a href="#">
+            <h2>{{ _('Meet the <br>heroes of <br>the Web') }}</h2>
+          </a>
+          <img src="{{ media('img/home/voices/promos/advocacy/logo.png') }}" alt="">
+        </li>
+        <li class="item promo-small-landscape open-news">
+          <a href="http://opennews.org/">
+            <h2>{{ _('Celebrate journalism on the open Web') }}</h2>
+          </a>
+        </li>
+        <li class="item promo-large-portrait sync" tabindex="0">
+          <h2 class="primary go">{{ _('Take <br>your Web <br>with you') }}</h2>
+          <a href="{{ url('firefox.sync') }}">
+            <div class="secondary">
+              <h3>{{ _('Access your bookmarks, tabs and more anywhere you use Firefox.') }}</h3>
+              <p class="more">{{ _('Get started with Sync') }}</p>
+            </div>
+          </a>
+        </li>
+        <li class="item promo-large-landscape net-nutrality" tabindex="0">
+          <h2 class="primary go">{{ _('Stand with Mozilla to <br>protect net neutrality') }}</h2>
+          <a href="https://sendto.mozilla.org/page/s/protect-net-neutrality">
+            <div class="secondary">
+              <h3>Tell U.S. Congress to protect <br>a level playing field on the <br>open Web.</h3>
+              <p class="more">{{ _('Write to your legislator') }}</p>
+            </div>
+          </a>
+        </li>
+        <li class="item promo-face">
+          <a href="#" class="face-05">{{ _('Mozillian') }}</a>
+        </li>
+        <li class="item promo-face">
+          <a href="https://mozillians.org/u/Komal_ji_gandhi/" class="komal-ji-gandhi">{{ _('Mozillian') }}</a>
+        </li>
+        <li class="item promo-face space-left">
+          <a href="https://mozillians.org/u/Mermi/" class="mermi">{{ _('Mozillian') }}</a>
+        </li>
+        <li class="item promo-face">
+          <a href="https://mozillians.org/u/hseagle2015/" class="hseagle2015">{{ _('Mozillian') }}</a>
+        </li>
+        <li class="item promo-small-landscape tweet">
+          <div class="tweet-container">
+            <a class="tweet-text" href="#">There are many ways to get involved in Mozilla! Here are some ranging from user support to&hellip;</a>
+            <div class="tweet-actions">
+              <a href="#" class="tweet-reply" title="{{ _('Reply') }}"></a>
+              <a href="#" class="tweet-retweet" title="{{ _('Retweet') }}"></a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="faces-grid-inner"></div>
+  </section>
+
+  <section class="module" id="firefox-download-section">
+    <div class="container">
+      <header>
+        <a href="{{ url('firefox') }}" id="firefox-promo-link">
+          <h3><img src="{{ MEDIA_URL }}img/home/voices/firefox-logo-wordmark-white.png" alt="Firefox"></h3>
+          <h4>{{_('Committed to you, your <br>privacy and an open Web')}}</h4>
+        </a>
+      </header>
+      {{ download_firefox(simple=true) }}
+    </div>
+  </section>
+
+  <section class="module" id="mozilla-voices">
+    <div class="container">
+      <header class="voices-header">
+        <h2>{{ _('The Open Standard') }}</h2>
+        <p>{{ _('Welcome to our online publication about the power of open systems to connect people and help them interact in new and more meaningful ways.') }}</p>
+      </header>
+      <div class="voices-content">
+        <div class="filter">
+          <h3>{{ _('Sort by') }}</h3>
+          <button type="button" id="technology-btn" aria-controls="voices-technology" class="selected">{{ _('Technology') }}</button>
+          <button type="button" id="privacy-btn" aria-controls="voices-privacy">{{ _('Privacy') }}</button>
+          <button type="button" id="open-web-btn" aria-controls="voices-open-web">{{ _('Open Web') }}</button>
+          <button type="button" id="mobile-btn" aria-controls="voices-mobile">{{ _('Mobile') }}</button>
+        </div>
+        <div class="voices-container selected" id="voices-technology">
+          <ul class="headlines">
+            <li role="presentation">
+              <a href="#" aria-controls="tech-article-1">
+                <h3>Online Anonymity Will Soon Be The Only Kind We Have</h3>
+                <p>Anonymity: it’s all the rage–Whisper, Secret–and it’s rage-inducing. A Brazilian court has ruled that Secret must be removed from app stores there, and existing installs must be remotely wiped. The UK’s House of Lords has essentially recommended the extinction of online anonymity.</p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#" aria-controls="tech-article-2">
+                <h3>How Kids Find Online Privacy</h3>
+                <p>Anthropologist danah boyd (uncapitalization hers) is the author of It's Complicated: The Social Lives of Networked Teens (Yale University Press). In May, she told reason three ways kids find privacy online.</p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#" aria-controls="tech-article-3">
+                <h3>At GSA, an ‘Internet of Things’ experiment</h3>
+                <p>At the General Services Administration in downtown Washington, tiny white sensors pepper the windows, ceiling tiles, heating units, water tanks and fan coolers, almost blending in to the building’s open-plan decor.</p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#" aria-controls="tech-article-4">
+                <h3>Group seeks ban on drones to protect privacy</h3>
+                <p>I few weeks ago I watched “Red,” one of my favorite movies. The action flick stars Bruce Willis, Morgan Freeman and Helen Mirren as ex-CIA agents who are RED — Retired: Extremely Dangerous. The agents unknowingly witnessed war crimes committed decades ago by the now vice president with aspirations for his boss’ job.</p>
+              </a>
+            </li>
+          </ul>
+          <div class="article-container">
+            <article id="tech-article-1">
+              <h3>Online Anonymity Will Soon Be The Only Kind We Have</h3>
+              <p>Anonymity: it’s all the rage–Whisper, Secret–and it’s rage-inducing. A Brazilian court has ruled that Secret must be removed from app stores there, and existing installs must be remotely wiped. The UK’s House of Lords has essentially recommended the extinction of online anonymity.</p>
+              <p>Why? Because cameras keep getting cheaper, and better, and more ubiquitous, as does facial recognition software. As The Economist recently put it: “the idea that anyone will be able hide for long in Nepal, or anywhere else, looks quaint.” Have you ever in your life been photographed doing something embarrassing? Get your explanations ready now: you can expect every picture (or video) you’ve ever appeared in to eventually be connected with you. Traffic cameras, dashboard cameras, police body cameras, drone cameras — every time you pop up in any of those, your identity, location, and activity will be identified, indexed, and stored.</p>
+              <a class="more" href="http://techcrunch.com/2014/08/30/online-anonymity-will-soon-be-the-only-kind-we-have/">Read more</a>
+            </article>
+            <article id="tech-article-2">
+              <h3>How Kids Find Online Privacy</h3>
+              <p>Anthropologist danah boyd (uncapitalization hers) is the author of It's Complicated: The Social Lives of Networked Teens (Yale University Press). In May, she told reason three ways kids find privacy online.</p>
+              <p>1. Social steganography. The most common way teens find privacy is not by restricting access to content, but by restricting access to meaning. They encode what they're posting using in-jokes, song lyrics, pronouns, and references that outsiders won't recognize.</p>
+
+              <p>2. Super logoff. Even Facebook can be turned into an ephemeral tool if you deactivate your profile whenever you're done using it. All you have to do is pretend to delete your account and Facebook will give you the option to deactivate instead. When you're not activated, no one can search for you or leave messages for you. While this is not a common practice, it's pretty ingenious.</p>
+
+              <p>3. Switch, switch, and switch. Parents think that they're "cool" when they know about the latest, greatest app. But once they show up, it's not as much fun. As a result, plenty of teens are on the hunt for something that no one's ever heard of. They jump from service to service, looking for a place where they can be let alone.</p>
+
+              <a class="more" href="http://reason.com/archives/2014/08/31/how-kids-find-online-privacy">Read more</a>
+            </article>
+            <article id="tech-article-3">
+              <h3>At GSA, an ‘Internet of Things’ experiment</h3>
+              <p>At the General Services Administration in downtown Washington, tiny white sensors pepper the windows, ceiling tiles, heating units, water tanks and fan coolers, almost blending in to the building’s open-plan decor.</p>
+              <p>Some detect how much sunlight shines through a window, and indoor bulbs dim or shades raise themselves accordingly. Others sense motion, turning off lights, air conditioners or power sources when employees are away from their desks. Some sensors simply relay information about total utility consumption, such as how much cooled water or energy employees have used in a day.</p>
+              <a class="more" href="http://www.washingtonpost.com/business/on-it/at-gsa-an-internet-of-things-experiment/2014/08/30/403c620c-2e10-11e4-994d-202962a9150c_story.html">Read more</a>
+            </article>
+            <article id="tech-article-4">
+              <h3>Group seeks ban on drones to protect privacy</h3>
+              <p>I few weeks ago I watched “Red,” one of my favorite movies. The action flick stars Bruce Willis, Morgan Freeman and Helen Mirren as ex-CIA agents who are RED — Retired: Extremely Dangerous. The agents unknowingly witnessed war crimes committed decades ago by the now vice president with aspirations for his boss’ job.</p>
+              <p>To ensure the crimes never surface, the VP orders the former agents killed. But because the agents are RED, they don’t make easy targets.</p>
+              <p>One of the other RED agents is Marvin, portrayed by John Malkovich. Marvin is slightly psychotic, mostly because the government gave him daily doses of LSD for 11 years. Marvin is paranoid and is convinced he is constantly being watched. He has a decoy house while he actually lives in an underground bunker accessed through the trunk of a car.</p>
+              <a class="more" href="http://www.postcrescent.com/story/money/2014/08/31/group-seeks-ban-drones-protect-privacy/14817525/">Read more</a>
+            </article>
+          </div>
+        </div>
+        <div class="voices-container" id="voices-privacy">
+          <ul class="headlines">
+            <li role="presentation">
+              <a href="#" aria-controls="privacy-article-1">
+                <h3>Online Anonymity Will Soon Be The Only Kind We Have</h3>
+                <p>Anonymity: it’s all the rage–Whisper, Secret–and it’s rage-inducing. A Brazilian court has ruled that Secret must be removed from app stores there, and existing installs must be remotely wiped. The UK’s House of Lords has essentially recommended the extinction of online anonymity.</p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#" aria-controls="privacy-article-2">
+                <h3>How Kids Find Online Privacy</h3>
+                <p>Anthropologist danah boyd (uncapitalization hers) is the author of It's Complicated: The Social Lives of Networked Teens (Yale University Press). In May, she told reason three ways kids find privacy online.</p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#" aria-controls="privacy-article-3">
+                <h3>At GSA, an ‘Internet of Things’ experiment</h3>
+                <p>At the General Services Administration in downtown Washington, tiny white sensors pepper the windows, ceiling tiles, heating units, water tanks and fan coolers, almost blending in to the building’s open-plan decor.</p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#" aria-controls="privacy-article-4">
+                <h3>Group seeks ban on drones to protect privacy</h3>
+                <p>I few weeks ago I watched “Red,” one of my favorite movies. The action flick stars Bruce Willis, Morgan Freeman and Helen Mirren as ex-CIA agents who are RED — Retired: Extremely Dangerous. The agents unknowingly witnessed war crimes committed decades ago by the now vice president with aspirations for his boss’ job.</p>
+              </a>
+            </li>
+          </ul>
+          <div class="article-container">
+            <article id="privacy-article-1">
+              <h3>Online Anonymity Will Soon Be The Only Kind We Have</h3>
+              <p>Anonymity: it’s all the rage–Whisper, Secret–and it’s rage-inducing. A Brazilian court has ruled that Secret must be removed from app stores there, and existing installs must be remotely wiped. The UK’s House of Lords has essentially recommended the extinction of online anonymity.</p>
+              <p>Why? Because cameras keep getting cheaper, and better, and more ubiquitous, as does facial recognition software. As The Economist recently put it: “the idea that anyone will be able hide for long in Nepal, or anywhere else, looks quaint.” Have you ever in your life been photographed doing something embarrassing? Get your explanations ready now: you can expect every picture (or video) you’ve ever appeared in to eventually be connected with you. Traffic cameras, dashboard cameras, police body cameras, drone cameras — every time you pop up in any of those, your identity, location, and activity will be identified, indexed, and stored.</p>
+              <a class="more" href="http://techcrunch.com/2014/08/30/online-anonymity-will-soon-be-the-only-kind-we-have/">Read more</a>
+            </article>
+            <article id="privacy-article-2">
+              <h3>How Kids Find Online Privacy</h3>
+              <p>Anthropologist danah boyd (uncapitalization hers) is the author of It's Complicated: The Social Lives of Networked Teens (Yale University Press). In May, she told reason three ways kids find privacy online.</p>
+              <p>1. Social steganography. The most common way teens find privacy is not by restricting access to content, but by restricting access to meaning. They encode what they're posting using in-jokes, song lyrics, pronouns, and references that outsiders won't recognize.</p>
+
+              <p>2. Super logoff. Even Facebook can be turned into an ephemeral tool if you deactivate your profile whenever you're done using it. All you have to do is pretend to delete your account and Facebook will give you the option to deactivate instead. When you're not activated, no one can search for you or leave messages for you. While this is not a common practice, it's pretty ingenious.</p>
+
+              <p>3. Switch, switch, and switch. Parents think that they're "cool" when they know about the latest, greatest app. But once they show up, it's not as much fun. As a result, plenty of teens are on the hunt for something that no one's ever heard of. They jump from service to service, looking for a place where they can be let alone.</p>
+
+              <a class="more" href="http://reason.com/archives/2014/08/31/how-kids-find-online-privacy">Read more</a>
+            </article>
+            <article id="privacy-article-3">
+              <h3>At GSA, an ‘Internet of Things’ experiment</h3>
+              <p>At the General Services Administration in downtown Washington, tiny white sensors pepper the windows, ceiling tiles, heating units, water tanks and fan coolers, almost blending in to the building’s open-plan decor.</p>
+              <p>Some detect how much sunlight shines through a window, and indoor bulbs dim or shades raise themselves accordingly. Others sense motion, turning off lights, air conditioners or power sources when employees are away from their desks. Some sensors simply relay information about total utility consumption, such as how much cooled water or energy employees have used in a day.</p>
+              <a class="more" href="http://www.washingtonpost.com/business/on-it/at-gsa-an-internet-of-things-experiment/2014/08/30/403c620c-2e10-11e4-994d-202962a9150c_story.html">Read more</a>
+            </article>
+            <article id="privacy-article-4">
+              <h3>Group seeks ban on drones to protect privacy</h3>
+              <p>I few weeks ago I watched “Red,” one of my favorite movies. The action flick stars Bruce Willis, Morgan Freeman and Helen Mirren as ex-CIA agents who are RED — Retired: Extremely Dangerous. The agents unknowingly witnessed war crimes committed decades ago by the now vice president with aspirations for his boss’ job.</p>
+              <p>To ensure the crimes never surface, the VP orders the former agents killed. But because the agents are RED, they don’t make easy targets.</p>
+              <p>One of the other RED agents is Marvin, portrayed by John Malkovich. Marvin is slightly psychotic, mostly because the government gave him daily doses of LSD for 11 years. Marvin is paranoid and is convinced he is constantly being watched. He has a decoy house while he actually lives in an underground bunker accessed through the trunk of a car.</p>
+              <a class="more" href="http://www.postcrescent.com/story/money/2014/08/31/group-seeks-ban-drones-protect-privacy/14817525/">Read more</a>
+            </article>
+          </div>
+        </div>
+        <div class="voices-container" id="voices-open-web">
+          <ul class="headlines">
+            <li role="presentation">
+              <a href="#" aria-controls="open-web-article-1">
+                <h3>Online Anonymity Will Soon Be The Only Kind We Have</h3>
+                <p>Anonymity: it’s all the rage–Whisper, Secret–and it’s rage-inducing. A Brazilian court has ruled that Secret must be removed from app stores there, and existing installs must be remotely wiped. The UK’s House of Lords has essentially recommended the extinction of online anonymity.</p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#" aria-controls="open-web-article-2">
+                <h3>How Kids Find Online Privacy</h3>
+                <p>Anthropologist danah boyd (uncapitalization hers) is the author of It's Complicated: The Social Lives of Networked Teens (Yale University Press). In May, she told reason three ways kids find privacy online.</p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#" aria-controls="open-web-article-3">
+                <h3>At GSA, an ‘Internet of Things’ experiment</h3>
+                <p>At the General Services Administration in downtown Washington, tiny white sensors pepper the windows, ceiling tiles, heating units, water tanks and fan coolers, almost blending in to the building’s open-plan decor.</p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#" aria-controls="open-web-article-4">
+                <h3>Group seeks ban on drones to protect privacy</h3>
+                <p>I few weeks ago I watched “Red,” one of my favorite movies. The action flick stars Bruce Willis, Morgan Freeman and Helen Mirren as ex-CIA agents who are RED — Retired: Extremely Dangerous. The agents unknowingly witnessed war crimes committed decades ago by the now vice president with aspirations for his boss’ job.</p>
+              </a>
+            </li>
+          </ul>
+          <div class="article-container">
+            <article id="open-web-article-1">
+              <h3>Online Anonymity Will Soon Be The Only Kind We Have</h3>
+              <p>Anonymity: it’s all the rage–Whisper, Secret–and it’s rage-inducing. A Brazilian court has ruled that Secret must be removed from app stores there, and existing installs must be remotely wiped. The UK’s House of Lords has essentially recommended the extinction of online anonymity.</p>
+              <p>Why? Because cameras keep getting cheaper, and better, and more ubiquitous, as does facial recognition software. As The Economist recently put it: “the idea that anyone will be able hide for long in Nepal, or anywhere else, looks quaint.” Have you ever in your life been photographed doing something embarrassing? Get your explanations ready now: you can expect every picture (or video) you’ve ever appeared in to eventually be connected with you. Traffic cameras, dashboard cameras, police body cameras, drone cameras — every time you pop up in any of those, your identity, location, and activity will be identified, indexed, and stored.</p>
+              <a class="more" href="http://techcrunch.com/2014/08/30/online-anonymity-will-soon-be-the-only-kind-we-have/">Read more</a>
+            </article>
+            <article id="open-web-article-2">
+              <h3>How Kids Find Online Privacy</h3>
+              <p>Anthropologist danah boyd (uncapitalization hers) is the author of It's Complicated: The Social Lives of Networked Teens (Yale University Press). In May, she told reason three ways kids find privacy online.</p>
+              <p>1. Social steganography. The most common way teens find privacy is not by restricting access to content, but by restricting access to meaning. They encode what they're posting using in-jokes, song lyrics, pronouns, and references that outsiders won't recognize.</p>
+
+              <p>2. Super logoff. Even Facebook can be turned into an ephemeral tool if you deactivate your profile whenever you're done using it. All you have to do is pretend to delete your account and Facebook will give you the option to deactivate instead. When you're not activated, no one can search for you or leave messages for you. While this is not a common practice, it's pretty ingenious.</p>
+
+              <p>3. Switch, switch, and switch. Parents think that they're "cool" when they know about the latest, greatest app. But once they show up, it's not as much fun. As a result, plenty of teens are on the hunt for something that no one's ever heard of. They jump from service to service, looking for a place where they can be let alone.</p>
+
+              <a class="more" href="http://reason.com/archives/2014/08/31/how-kids-find-online-privacy">Read more</a>
+            </article>
+            <article id="open-web-article-3">
+              <h3>At GSA, an ‘Internet of Things’ experiment</h3>
+              <p>At the General Services Administration in downtown Washington, tiny white sensors pepper the windows, ceiling tiles, heating units, water tanks and fan coolers, almost blending in to the building’s open-plan decor.</p>
+              <p>Some detect how much sunlight shines through a window, and indoor bulbs dim or shades raise themselves accordingly. Others sense motion, turning off lights, air conditioners or power sources when employees are away from their desks. Some sensors simply relay information about total utility consumption, such as how much cooled water or energy employees have used in a day.</p>
+              <a class="more" href="http://www.washingtonpost.com/business/on-it/at-gsa-an-internet-of-things-experiment/2014/08/30/403c620c-2e10-11e4-994d-202962a9150c_story.html">Read more</a>
+            </article>
+            <article id="open-web-article-4">
+              <h3>Group seeks ban on drones to protect privacy</h3>
+              <p>I few weeks ago I watched “Red,” one of my favorite movies. The action flick stars Bruce Willis, Morgan Freeman and Helen Mirren as ex-CIA agents who are RED — Retired: Extremely Dangerous. The agents unknowingly witnessed war crimes committed decades ago by the now vice president with aspirations for his boss’ job.</p>
+              <p>To ensure the crimes never surface, the VP orders the former agents killed. But because the agents are RED, they don’t make easy targets.</p>
+              <p>One of the other RED agents is Marvin, portrayed by John Malkovich. Marvin is slightly psychotic, mostly because the government gave him daily doses of LSD for 11 years. Marvin is paranoid and is convinced he is constantly being watched. He has a decoy house while he actually lives in an underground bunker accessed through the trunk of a car.</p>
+              <a class="more" href="http://www.postcrescent.com/story/money/2014/08/31/group-seeks-ban-drones-protect-privacy/14817525/">Read more</a>
+            </article>
+          </div>
+        </div>
+        <div class="voices-container" id="voices-mobile">
+          <ul class="headlines">
+            <li role="presentation">
+              <a href="#" aria-controls="mobile-article-1">
+                <h3>Online Anonymity Will Soon Be The Only Kind We Have</h3>
+                <p>Anonymity: it’s all the rage–Whisper, Secret–and it’s rage-inducing. A Brazilian court has ruled that Secret must be removed from app stores there, and existing installs must be remotely wiped. The UK’s House of Lords has essentially recommended the extinction of online anonymity.</p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#" aria-controls="mobile-article-2">
+                <h3>How Kids Find Online Privacy</h3>
+                <p>Anthropologist danah boyd (uncapitalization hers) is the author of It's Complicated: The Social Lives of Networked Teens (Yale University Press). In May, she told reason three ways kids find privacy online.</p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#" aria-controls="mobile-article-3">
+                <h3>At GSA, an ‘Internet of Things’ experiment</h3>
+                <p>At the General Services Administration in downtown Washington, tiny white sensors pepper the windows, ceiling tiles, heating units, water tanks and fan coolers, almost blending in to the building’s open-plan decor.</p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#" aria-controls="mobile-article-4">
+                <h3>Group seeks ban on drones to protect privacy</h3>
+                <p>I few weeks ago I watched “Red,” one of my favorite movies. The action flick stars Bruce Willis, Morgan Freeman and Helen Mirren as ex-CIA agents who are RED — Retired: Extremely Dangerous. The agents unknowingly witnessed war crimes committed decades ago by the now vice president with aspirations for his boss’ job.</p>
+              </a>
+            </li>
+          </ul>
+          <div class="article-container">
+            <article id="mobile-article-1">
+              <h3>Online Anonymity Will Soon Be The Only Kind We Have</h3>
+              <p>Anonymity: it’s all the rage–Whisper, Secret–and it’s rage-inducing. A Brazilian court has ruled that Secret must be removed from app stores there, and existing installs must be remotely wiped. The UK’s House of Lords has essentially recommended the extinction of online anonymity.</p>
+              <p>Why? Because cameras keep getting cheaper, and better, and more ubiquitous, as does facial recognition software. As The Economist recently put it: “the idea that anyone will be able hide for long in Nepal, or anywhere else, looks quaint.” Have you ever in your life been photographed doing something embarrassing? Get your explanations ready now: you can expect every picture (or video) you’ve ever appeared in to eventually be connected with you. Traffic cameras, dashboard cameras, police body cameras, drone cameras — every time you pop up in any of those, your identity, location, and activity will be identified, indexed, and stored.</p>
+              <a class="more" href="http://techcrunch.com/2014/08/30/online-anonymity-will-soon-be-the-only-kind-we-have/">Read more</a>
+            </article>
+            <article id="mobile-article-2">
+              <h3>How Kids Find Online Privacy</h3>
+              <p>Anthropologist danah boyd (uncapitalization hers) is the author of It's Complicated: The Social Lives of Networked Teens (Yale University Press). In May, she told reason three ways kids find privacy online.</p>
+              <p>1. Social steganography. The most common way teens find privacy is not by restricting access to content, but by restricting access to meaning. They encode what they're posting using in-jokes, song lyrics, pronouns, and references that outsiders won't recognize.</p>
+
+              <p>2. Super logoff. Even Facebook can be turned into an ephemeral tool if you deactivate your profile whenever you're done using it. All you have to do is pretend to delete your account and Facebook will give you the option to deactivate instead. When you're not activated, no one can search for you or leave messages for you. While this is not a common practice, it's pretty ingenious.</p>
+
+              <p>3. Switch, switch, and switch. Parents think that they're "cool" when they know about the latest, greatest app. But once they show up, it's not as much fun. As a result, plenty of teens are on the hunt for something that no one's ever heard of. They jump from service to service, looking for a place where they can be let alone.</p>
+
+              <a class="more" href="http://reason.com/archives/2014/08/31/how-kids-find-online-privacy">Read more</a>
+            </article>
+            <article id="mobile-article-3">
+              <h3>At GSA, an ‘Internet of Things’ experiment</h3>
+              <p>At the General Services Administration in downtown Washington, tiny white sensors pepper the windows, ceiling tiles, heating units, water tanks and fan coolers, almost blending in to the building’s open-plan decor.</p>
+              <p>Some detect how much sunlight shines through a window, and indoor bulbs dim or shades raise themselves accordingly. Others sense motion, turning off lights, air conditioners or power sources when employees are away from their desks. Some sensors simply relay information about total utility consumption, such as how much cooled water or energy employees have used in a day.</p>
+              <a class="more" href="http://www.washingtonpost.com/business/on-it/at-gsa-an-internet-of-things-experiment/2014/08/30/403c620c-2e10-11e4-994d-202962a9150c_story.html">Read more</a>
+            </article>
+            <article id="mobile-article-4">
+              <h3>Group seeks ban on drones to protect privacy</h3>
+              <p>I few weeks ago I watched “Red,” one of my favorite movies. The action flick stars Bruce Willis, Morgan Freeman and Helen Mirren as ex-CIA agents who are RED — Retired: Extremely Dangerous. The agents unknowingly witnessed war crimes committed decades ago by the now vice president with aspirations for his boss’ job.</p>
+              <p>To ensure the crimes never surface, the VP orders the former agents killed. But because the agents are RED, they don’t make easy targets.</p>
+              <p>One of the other RED agents is Marvin, portrayed by John Malkovich. Marvin is slightly psychotic, mostly because the government gave him daily doses of LSD for 11 years. Marvin is paranoid and is convinced he is constantly being watched. He has a decoy house while he actually lives in an underground bunker accessed through the trunk of a car.</p>
+              <a class="more" href="http://www.postcrescent.com/story/money/2014/08/31/group-seeks-ban-drones-protect-privacy/14817525/">Read more</a>
+            </article>
+          </div>
+        </div>
+      </div>
+      <a class="more-large" href="#">Read more articles</a>
+    </div>
+  </section>
+
+  <section class="module" id="community">
+    <div class="container">
+      <ul>
+        <li>
+          <span class="stat organizations">5000</span>
+          <span>{{ _('Organizations, annually <br>backing the open web') }}</span>
+        </li>
+        <li>
+          <span class="stat contributors">150,000</span>
+          <span>{{ _('Contributors <br>just like you') }}</span>
+        </li>
+        <li>
+          <span class="stat countries">180</span>
+          <span>{{ _('Countries and <br>counting') }}</span>
+        </li>
+      </ul>
+
+      <a class="contribute" href="{{ url('mozorg.contribute') }}">{{ _('Get Involved with Mozilla today') }}</a>
+    </div>
+  </section>
+
+  <section class="module" id="upcoming-events">
+    <div class="container">
+      <h2>{{ _('Upcoming events') }}</h2>
+
+      <div class="inner-container">
+        <a href="https://reps.mozilla.org/e/open-source-comes-to-campus-city-college-of-san-francisco/" class="featured-event">
+          <div class="event-map">
+            <time datetime="13-09-2014">
+              <abbr class="date-month" title="{{ _('September') }}">{{ _('Sep') }}</abbr>
+              <span class="date-day">13</span>
+            </time>
+            <img src="{{ media('img/home/voices/mapsmall.png') }}" alt="">
+          </div>
+
+          <div class="event-detail">
+            <h3 class="next">{{ _('Next event') }}</h3>
+            <h4>Open Source Comes to Campus: City College of San Francisco</h4>
+            <time datetime="13-09-2014">September 13, 2014</time>
+            <p class="event-location">CCSF Ocean Campus Batmale Hall , San Francisco, California, United States</p>
+          </div>
+        </a>
+
+        <ul class="events-list">
+          <li>
+            <a href="https://reps.mozilla.org/e/hive-india-at-maker-faire-new-york-2014/">
+              <time datetime="20-09-2014">
+                <abbr class="date-month" title="{{ _('September') }}">{{ _('Sep') }}</abbr>
+                <span class="date-day">20</span>
+              </time>
+              <div class="event-detail">
+                <h3>Hive India at Maker Faire New York 2014</h3>
+                <p class="event-location">New York Hall Of Science, Corona, New York, United States</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://reps.mozilla.org/e/google-summer-of-code/">
+              <time datetime="24-09-2014">
+                <abbr class="date-month" title="{{ _('September') }}">{{ _('Sep') }}</abbr>
+                <span class="date-day">24</span>
+              </time>
+              <div class="event-detail">
+                <h3>Google Summer of Code</h3>
+                <p class="event-location">Marriott and Hilton, San Jose, California, United States</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://reps.mozilla.org/e/initiation-to-maker-parties-in-utah/">
+              <time datetime="26-09-2014">
+                <abbr class="date-month" title="{{ _('September') }}">{{ _('Sep') }}</abbr>
+                <span class="date-day">26</span>
+              </time>
+              <div class="event-detail">
+                <h3>Initiation to Maker Parties in Utah</h3>
+                <p class="event-location">Harmons, Draper, Utah, United States</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <a class="more-large" href="https://reps.mozilla.org/events/">See all events</a>
+    </div>
+  </section>
+
+  <section class="module" id="secondary-links">
+    <div class="container">
+      <ul>
+        <li>
+          <a class="add-ons" href="https://addons.mozilla.org/">
+            <h2>{{ _('Add-ons') }}</h2>
+            <p>{{ _('Compare prices, check the weather, listen to music, send a tweet and more right from Firefox.') }}</p>
+          </a>
+        </li>
+        <li>
+          <a class="careers" href="https://careers.mozilla.org/">
+            <h2>{{ _('Careers') }}</h2>
+            <p>{{ _('Learn about the benefits of working at Mozilla and view open positions around the world.') }}</p>
+          </a>
+        </li>
+        <li>
+          <a class="help" href="https://sumo.mozilla.org/">
+            <h2>{{ _('Need help?') }}</h2>
+            <p>{{ _('Get answers to your questions about Firefox and all Mozilla products from our support team.') }}</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="module" id="newsletter-signup">
+    <div class="container">
+      {% if LANG == 'en-US' %}
+        {{ mozorg_newsletter_form() }}
+      {% else %}
+        {{ email_newsletter_form() }}
+      {% endif %}
+    </div>
+  </section>
+</main>
+
+{% endblock %}
+
+{% block email_form %}{% endblock %}

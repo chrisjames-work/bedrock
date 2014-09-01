@@ -1,0 +1,407 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+@import "../sandstone/lib.less";
+
+@widthSquareGrid_18: 2900px;
+@widthSquareGrid_17: 2740px;
+@widthSquareGrid_16: 2580px;
+@widthSquareGrid_15: 2420px;
+@widthSquareGrid_14: 2260px;
+@widthSquareGrid_13: 2100px;
+@widthSquareGrid_12: 1940px;
+@widthSquareGrid_11: 1780px;
+@widthSquareGrid_10: 1620px;
+@widthSquareGrid_9: 1460px;
+@widthSquareGrid_8: 1300px;
+@widthSquareGrid_7: 1140px;
+@widthSquareGrid_6: 980px;
+@widthSquareGrid_5: 820px;
+@widthSquareGrid_4: 660px;
+@widthSquareGrid_3: 500px;
+@widthSquareGrid_2: 340px;
+
+/****************************************************************************/
+// Firefox Download
+.promo-small-landscape.firefox-download {
+    background: #689f2a;
+
+    &.stamp {
+        top: 0;
+        left: 960px;
+    }
+
+    h2 {
+        position: relative;
+        left: 0;
+        width: 60%;
+        text-align: center;
+        .transition(left .3s ease-in-out);
+
+        &.go:after {
+            position: absolute;
+            bottom: -45px;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: -20px;
+            content: '';
+            background-image: url(/media/img/home/voices/promos/go-sprite.png?08-09-2014);
+            background-position: 0 -84px;
+            background-repeat: no-repeat;
+        }
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &.show {
+        h2 {
+            left: -300px;
+        }
+
+        img {
+            right: -200px;
+        }
+
+        .secondary {
+            opacity: 1;
+            visibility: visible;
+            .transition(opacity .3s .3s ease-in-out);
+        }
+    }
+
+    img {
+        position: absolute;
+        top: -10px;
+        right: -65px;
+        .transition(right .3s ease-in-out);
+    }
+
+    .primary {
+        position: relative;
+        padding: @baseLine;
+    }
+
+    .secondary {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        padding: @baseLine;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        text-align: center;
+        -webkit-transition: visibility 0s .3s ease-in-out, opacity .3s 0s ease-in-out;
+        transition: visibility 0s .3s ease-in-out, opacity .3s 0s ease-in-out;
+
+        a:link,
+        a:visited {
+            color: #fff;
+        }
+
+        .download-link {
+            width: 100%;
+        }
+        .download-other {
+            margin-top: @baseLine;
+            color: #fff;
+        }
+    }
+}
+
+/****************************************************************************/
+// Advocacy
+.promo-small-landscape.advocacy {
+    background: #005189;
+
+    img {
+        position: absolute;
+        top: @baseLine / 2;
+        left: @baseLine / 2;
+    }
+
+    a:link,
+    a:visited {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        text-align: right;
+        padding: @baseLine;
+    }
+
+    h2 {
+        float: right;
+        width: 50%;
+        text-align: left;
+    }
+
+    a:hover,
+    a:active,
+    a:focus {
+        h2 {
+            text-decoration: underline;
+        }
+    }
+}
+
+/****************************************************************************/
+// Webmaker
+.promo-small-landscape.webmaker {
+    position:relative;
+    background: #3fb58e;
+    overflow: hidden;
+
+    img {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+    }
+
+    h2 {
+        float: right;
+        width: 130px;
+        margin: @baseLine;
+        text-align: left;
+        font-size: 24px;
+    }
+}
+
+/****************************************************************************/
+// Open News
+.promo-small-landscape.open-news {
+    background: #e14164;
+
+    h2 {
+        background: url(/media/img/home/voices/promos/open-news/newspaper.png) @baseLine (@baseLine * 2) no-repeat;
+        padding: @baseLine @baseLine @baseLine 120px;
+    }
+}
+
+/****************************************************************************/
+// Voices open Web
+.promo-large-portrait.voices-open-web {
+    background: #58a9b7;
+
+    .category {
+        color: #b5f3fe;
+        background-color: #4f98a4;
+    }
+
+    &.show > a {
+        border: 5px solid #4f98a4;
+    }
+
+    h2 {
+        background: url(/media/img/home/voices/promos/open-standard/logo.png) top center no-repeat;
+        padding: 110px @baseLine 0 @baseLine;
+        margin-top: @baseLine * 2;
+    }
+}
+
+/****************************************************************************/
+// Mozilla Festival
+.promo-large-landscape.festival {
+    background: #e08071;
+
+    .category {
+        color: #fdd9b7;
+        background-color: #c97265;
+    }
+
+    &.show > a {
+        border: 5px solid #c97265;
+    }
+
+    h2 {
+        text-align: left;
+        background-image: url(/media/img/home/voices/promos/festival/logo.png?08-09-2014);
+        background-position: 0 (@baseLine * 4);
+        background-repeat: no-repeat;
+        padding: (@baseLine * 4) (@baseLine * 2) @baseLine 120px;
+        margin-left: @baseLine * 4;
+        min-height: 104px;
+
+        &.go:after {
+            bottom: -40px;
+            margin-left: -(62px);
+        }
+    }
+}
+
+/****************************************************************************/
+// Net Neutrality
+.promo-large-landscape.net-nutrality {
+    background: #8d8d8d;
+
+    .category {
+        color: #fff;
+        background-color: #7e7e7e;
+    }
+
+    &.show > a {
+        border: 5px solid #7e7e7e;
+    }
+}
+
+/****************************************************************************/
+// Firefox Sync
+.promo-large-portrait.sync {
+    background: #ffcb5c;
+
+    .category {
+        color: #000;
+        background-color: #e5b652;
+    }
+
+    &.show > a {
+        border: 5px solid #e5b652;
+    }
+
+    h2, h3, p {
+        color: #4f6861;
+    }
+
+    h2 {
+        background-image: url(/media/img/home/voices/promos/sync/devices.png);
+        background-position: center (@baseLine * 2);
+        background-repeat: no-repeat;
+        padding: (@baseLine * 8) @baseLine 0 @baseLine;
+        margin-top: 0;
+
+        &.go:after {
+            background-position: 0 -42px;
+        }
+    }
+
+    p.more {
+        color: #c0413c;
+        border: 2px solid #d5663f;
+
+        &:hover {
+            border-color: #c0413c;
+        }
+    }
+}
+
+.no-js {
+    .promo-large-landscape,
+    .promo-large-portrait {
+        &:hover,
+        &:focus {
+            &> a {
+                visibility: visible;
+                -webkit-transition: border .3s ease-in-out, visibility .3s 0s ease-in-out;
+                        transition: border .3s ease-in-out, visibility .3s 0s ease-in-out;
+            }
+
+            .primary {
+                opacity: 0;
+                visibility: hidden;
+                -webkit-transition: opacity .3s ease-in-out, visibility .3s .3s ease-in-out;
+                        transition: opacity .3s ease-in-out, visibility .3s .3s ease-in-out;
+            }
+
+            .secondary {
+                opacity: 1;
+                visibility: visible;
+                -webkit-transition: opacity .3s .3s ease-in-out, visibility .3s .3s ease-in-out;
+                        transition: opacity .3s .3s ease-in-out, visibility .3s .3s ease-in-out;
+            }
+        }
+    }
+
+    .promo-small-landscape.firefox-download {
+        &:hover,
+        &:focus {
+            h2 {
+                left: -300px;
+            }
+
+            img {
+                right: -200px;
+            }
+
+            .secondary {
+                opacity: 1;
+                visibility: visible;
+                .transition(opacity .3s .3s ease-in-out);
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: @widthSquareGrid_7) and (max-width: (@widthSquareGrid_8 - 1)) {
+    .promo-grid .firefox-download.stamp {
+        top: 0;
+        left: 640px;
+    }
+}
+
+@media only screen and (min-width: @widthSquareGrid_6) and (max-width: (@widthSquareGrid_7 - 1)) {
+    .promo-grid .firefox-download.stamp {
+        top: 0;
+        left: 640px;
+    }
+}
+
+@media only screen and (max-width: (@widthSquareGrid_6 - 1)) {
+
+    .promo-large-landscape {
+        width: @widthSquareGrid_2 - (@gridGutterWidth * 2);
+        height: 460px;
+    }
+
+    .promo-large-landscape.festival {
+
+        h2 {
+            text-align: center;
+            background-image: none;
+            padding: (@baseLine * 4) (@baseLine * 2) (@baseLine / 2) (@baseLine * 2);
+            margin-left: 0;
+
+            &.go:after {
+                bottom: -45px;
+                margin-left: -(20px);
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: @widthSquareGrid_5) and (max-width: (@widthSquareGrid_6 - 1)) {
+    .promo-grid .firefox-download.stamp {
+        top: 0;
+        left: 320px;
+    }
+}
+
+@media only screen and (min-width: @widthSquareGrid_4) and (max-width: (@widthSquareGrid_5 - 1)) {
+    .promo-grid .firefox-download.stamp {
+        top: 0;
+        left: 320px;
+    }
+}
+
+@media only screen and (min-width: @widthSquareGrid_3) and (max-width: (@widthSquareGrid_4 - 1)) {
+    .promo-grid .firefox-download.stamp {
+        top: 0;
+        left: 0;
+    }
+}
+
+@media only screen and (max-width: (@widthSquareGrid_3 - 1)) {
+    .promo-grid .firefox-download.stamp {
+        top: 0;
+        left: 0;
+    }
+}
+
+/* End Individual promo item styles */
+
+

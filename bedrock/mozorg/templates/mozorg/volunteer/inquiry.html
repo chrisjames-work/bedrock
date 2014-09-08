@@ -19,13 +19,6 @@
   {{ js('contribute-form') }}
 {% endblock %}
 
-{% block string_data %}
-  {# L10n: Used as a label for a button that plays a video. #}
-  data-button-play='{{_('Play video')}}'
-  {# L10n: Used as a label for a button that pauses a video. #}
-  data-button-pause='{{_('Pause video')}}'
-{% endblock %}
-
 {% block site_header_nav %}{% endblock %}
 {% block site_header_logo %}{% endblock %}
 
@@ -391,7 +384,7 @@
     <h2>{{ _('What are you interested in?') }}</h2>
 
     <ul class="category-nav">
-      <li class="current"><a href="#info-coding">{{ _('Coding') }}</a></li>
+      <li><a href="#info-coding">{{ _('Coding') }}</a></li>
       <li><a href="#info-testing">{{ _('Testing') }}</a></li>
       {# L10n: The <i></i> acts as a supplemental label; you can omit this if your translation of the main label makes it redundant. #}
       <li><a href="#info-writing">{{ _('Writing <i>(Documentation)</i>') }}</a></li>
@@ -403,44 +396,44 @@
       <li><a href="#info-dontknow">{{ _('I don’t know') }}</a></li>
     </ul>
 
-    <div class="info" id="info-coding">
+    <div class="info-content" id="info-coding">
       <h3>{{ _('Coding') }}</h3>
       <p>{{ _('Contribute code to a whole range of Mozilla products, including Firefox and Firefox OS.') }}</p>
     </div>
 
-    <div class="info" id="info-testing">
+    <div class="info-content" id="info-testing">
       <h3>{{ _('Testing') }}</h3>
       <p>{{ _('Help make the Mozilla products you use — and love — even better.') }}</p>
     </div>
 
-    <div class="info" id="info-writing">
+    <div class="info-content" id="info-writing">
       {# L10n: The <i></i> acts as a supplemental label; you can omit this if your translation of the main label makes it redundant. #}
       <h3>{{ _('Writing <i>(Documentation)</i>') }}</h3>
       <p>{{ _('Lend your voice to Mozilla — from blogging and social media to providing technical documents for users and developers.') }}</p>
     </div>
 
-    <div class="info" id="info-teaching">
+    <div class="info-content" id="info-teaching">
       <h3>{{ _('Teaching') }}</h3>
       <p>{{ _('Share your skills with a community that’s eager to learn. Take advantage of our free tools, teaching resources and events.') }}</p>
     </div>
 
-    <div class="info" id="info-helping">
+    <div class="info-content" id="info-helping">
       {# L10n: The <i></i> acts as a supplemental label; you can omit this if your translation of the main label makes it redundant. #}
       <h3>{{ _('Helping <i>(Support)</i>') }}</h3>
       <p>{{ _('Provide support to users who need it and help everyone get the most out of their Mozilla products.') }}</p>
     </div>
 
-    <div class="info" id="info-localization">
+    <div class="info-content" id="info-localization">
       <h3>{{ _('Localization') }}</h3>
       <p>{{ _('Help make Mozilla stuff available in other languages. Translate everything from newsletters and websites to copy for Firefox and Firefox OS.') }}</p>
     </div>
 
-    <div class="info" id="info-activism">
+    <div class="info-content" id="info-activism">
       <h3>{{ _('Activism') }}</h3>
       <p>{{ _('Get involved with our opportunities to support freedom, security and privacy on the open Web.') }}</p>
     </div>
 
-    <div class="info" id="info-dontknow">
+    <div class="info-content" id="info-dontknow">
       <h3>{{ _('I don’t know') }}</h3>
       <p>{{ _('Not sure how you want to help? No problem. We can find the appropriate contribution activity for you.') }}</p>
     </div>

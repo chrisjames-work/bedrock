@@ -1,0 +1,216 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{% add_lang_files "mozorg/volunteer" %}
+
+{% extends "mozorg/base-resp.html" %}
+
+{% block page_title %}{{_('Mozillian Stories')}}{% endblock %}
+{% block body_id %}contribute{% endblock %}
+
+{% block page_css %}
+  {{ css('contribute-2015') }}
+{% endblock %}
+
+{% block js %}
+  {{ js('contribute-2015') }}
+  {{ js('contribute-form') }}
+{% endblock %}
+
+{% block site_header_nav %}{% endblock %}
+{% block site_header_logo %}{% endblock %}
+
+{% block content %}
+<main role="main">
+  <header class="page-head">
+    <nav class="volunteer-nav">
+      <div class="container">
+        <ul>
+          <li><a href="{{ url('mozorg.contribute') }}">{{ _('Volunteer overview') }}</a></li>
+          <li><a href="{{ url('mozorg.contribute.events') }}">{{ _('Worldwide events') }}</a></li>
+          <li class="current"><em>{{ _('Mozillian stories') }}</em></li>
+          <li class="cta"><a href="{{ url('mozorg.contribute.inquiry') }}">{{ _('Get involved') }}</a></li>
+        </ul>
+
+        <form class="country-form" action="#">
+          <p>
+            <label for="country">{{ _('Your country') }}</label>
+            <select id="country" name="country">
+              <option value="" disabled selected>{{ _('I live in&hellip;') }}</option>
+              <option value="ar">Albania</option>
+              <option value="br">Brazil</option>
+              <option value="cz">Czech Republic</option>
+              <option value="dk">Denmark</option>
+              <option value="ec">Ecuador</option>
+              <option value="fi">Finland</option>
+              <option value="ga">Guatamala</option>
+              <option value="hu">Hungary</option>
+              <option value="id">Indonesia</option>
+              <option value="jp">Japan</option>
+              <option value="kl">Kuala Lumpur</option>
+              <option value="etc">and so on</option>
+            </select>
+            <button type="submit">{{ _('Go') }}</button>
+          </p>
+        </form>
+
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="page-title">{{ _('Volunteer with Mozilla!') }}</h1>
+
+      <ul class="head-stats">
+        <li><strong>7,586</strong> {{ _('active worldwide Mozillians') }}</li>
+        <li><strong>154</strong> {{ _('upcoming events around the globe') }}</li>
+        <li><strong>80</strong> {{ _('Mozillians nearby you can connect with') }}</li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="section stories-intro">
+    <div class="container">
+      <h2 class="section-title">{{ _('#IAmAMozillian') }}</h2>
+      <p class="section-tagline">{{ _('Meet Mozilla volunteers all around the world. Learn about what they’ve worked on and see what they’re currently helping with.') }}</p>
+    </div>
+  </section>
+
+  <section class="section story-main">
+    <div class="container">
+      <h2 class="story-title">
+        Hi, I’m <b class="name">Rubén</b>, a Mozilla volunteer in <b class="country">Spain</b>
+      </h2>
+
+      <div class="story-intro">
+        <img class="photo" src="{{ media('img/volunteer/person-fpo.png') }}" alt="">
+        <p>
+        {% trans %}
+          I’ve been collaborating with the Mozilla community since 2004, helping with
+          website localization, QA, user support and community marketing. I’ve also
+          helped organize events in Spain and performed IT tasks within the Mozilla
+          Hispano community.
+        {% endtrans %}
+        </p>
+      </div>
+
+      <div class="story-areas">
+        <h3>{{ _('I’m currently helping with:') }}</h3>
+        <ul>
+          <li>{{ _('Mozilla.org localization') }}</li>
+          <li>{{ _('Firefox OS launch in Spain') }}</li>
+          <li>{{ _('Mozilla Hispano mentorship program') }}</li>
+          <li>{{ _('Community events') }}</li>
+        </ul>
+      </div>
+
+      <ul class="story-links">
+        <li><a href="#" class="twitter">@nukeador</a></li>
+        <li><a href="#" class="instragram">Instragram</a></li>
+        <li><a href="#" class="facebook">Facebook</a></li>
+        <li><a href="#" class="email">nukeador@example.com</a></li>
+      </ul>
+
+      <div class="more-toggle"><a href="#" role="button">{{ _('More') }}</a></div>
+
+      <section class="story-more">
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit.
+        Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis
+        vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales
+        leo, eget blandit nunc tortor nibh. Nullam mollis. Ut justo. Suspendisse potenti.</p>
+
+        <p>Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus
+        libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id,
+        est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis.</p>
+      </section>
+
+    </div>
+  </section>
+
+  <section class="section stories-other">
+    <div class="container">
+      <h2 class="section-title">{{ _('Read more Mozillian stories') }}</h2>
+      <p class="section-tagline">
+      {% trans link_hashtag='https://twitter.com/search?q=%23IAmAMozillian' %}
+        Meet some volunteers below and discover even more <br>stories on Twitter with <a href="{{ link_hashtag }}">#IAmAMozillian</a>
+      {% endtrans %}
+      </p>
+      <ul class="stories">
+        <li class="person hcard">
+          <h3 class="fn given-name">Rubén</h3>
+          <p class="country-name">Spain</p>
+          <a href="#" class="url">{{ _('Read his story') }} <img src="{{ media('img/volunteer/person-fpo.png') }}" alt=""></a>
+        </li>
+        <li class="person hcard">
+          <h3 class="fn given-name">Viking</h3>
+          <p class="country-name">Indonesia</p>
+          <a href="#" class="url">{{ _('Read his story') }} <img src="{{ media('img/volunteer/person-fpo.png') }}" alt=""></a>
+        </li>
+        <li class="person hcard">
+          <h3 class="fn given-name">Stefania</h3>
+          <p class="country-name">Romania</p>
+          <a href="#" class="url">{{ _('Read her story') }} <img src="{{ media('img/volunteer/person-fpo.png') }}" alt=""></a>
+        </li>
+        <li class="person">
+          <h3 class="fn given-name">Morvana</h3>
+          <p class="country-name">Brazil</p>
+          <a href="#" class="url">{{ _('Read her story') }} <img src="{{ media('img/volunteer/person-fpo.png') }}" alt=""></a>
+        </li>
+        <li class="person">
+          <h3 class="fn given-name">Tanha</h3>
+          <p class="country-name">Bangladesh</p>
+          <a href="#" class="url">{{ _('Read her story') }} <img src="{{ media('img/volunteer/person-fpo.png') }}" alt=""></a>
+        </li>
+        <li class="person">
+          <h3 class="fn given-name">Kwamena</h3>
+          <p class="country-name">Ghana</p>
+          <a href="#" class="url">{{ _('Read his story') }} <img src="{{ media('img/volunteer/person-fpo.png') }}" alt=""></a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section volunteer-extra">
+    <div class="container">
+
+      <div class="extra-event">
+        <h3>{{ _('Next event') }}</h3>
+        <a class="event-link" href="#">
+          <div class="event-map">
+            <time class="event-date" datetime="28-09-2014"><abbr class="date-month" title="September">Sep</abbr> <span class="date-day">28</span></time>
+            <img src="{{ media('img/volunteer/mapsmall-fpo.png') }}" alt="">
+          </div>
+          <h4 class="event-title">Translating Firefox OS</h4>
+          <p class="event-info"><span class="event-venue">Caixaforum</span> &middot; <span class="event-location">Madrid, Spain</span></p>
+        </a>
+        <p class="events-all"><a href="{{ url('mozorg.contribute.events') }}">{{ _('See all events') }}</a></p>
+      </div>
+
+      <div class="extra-links">
+        <h3>{{ _('Communicate') }}</h3>
+        <ul>
+          <li><a href="#">{{ _('Mozilla communities') }}</a></li>
+          <li><a href="#">{{ _('Mailing lists') }}</a></li>
+          <li><a href="#">{{ _('IRC channels') }}</a></li>
+        </ul>
+
+        <h3>{{ _('More links') }}</h3>
+        <ul>
+          <li><a href="#">{{ _('Firefox feedback') }}</a></li>
+          <li><a href="#">{{ _('Mozilla careers') }}</a></li>
+          <li><a href="#">{{ _('Need help with Firefox?') }}</a></li>
+        </ul>
+      </div>
+
+      <div class="extra-newsletter">
+        <h3>Newsletter form goes here</h3>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+{% endblock %}
+
+{% block email_form %}{% endblock %}
+

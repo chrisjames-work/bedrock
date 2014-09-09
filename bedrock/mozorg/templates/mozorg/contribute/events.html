@@ -1,0 +1,285 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{% add_lang_files "mozorg/volunteer" %}
+
+{% extends "mozorg/base-resp.html" %}
+
+{% from "newsletter/includes/macros.html" import email_form_thankyou with context %}
+
+{% block page_title %}{{_('Community Events')}}{% endblock %}
+{% block body_id %}contribute{% endblock %}
+
+{% block page_css %}
+  {{ css('contribute-2015-map') }}
+{% endblock %}
+
+{% block js %}
+  {{ js('contribute-2015-map') }}
+  {{ js('contribute-form') }}
+{% endblock %}
+
+{% block site_header_nav %}{% endblock %}
+{% block site_header_logo %}{% endblock %}
+
+{% block content %}
+<main role="main" id="main-content" data-mapbox="{{ settings.MAPBOX_TOKEN }}">
+  <header class="page-head">
+    <nav class="volunteer-nav">
+      <div class="container">
+        <ul>
+          <li><a href="{{ url('mozorg.contribute') }}">{{ _('Volunteer overview') }}</a></li>
+          <li class="current"><em>{{ _('Worldwide events') }}</em></li>
+          <li><a href="{{ url('mozorg.contribute.stories') }}">{{ _('Mozillian stories') }}</a></li>
+          <li class="cta"><a href="{{ url('mozorg.contribute.inquiry') }}">{{ _('Get involved') }}</a></li>
+        </ul>
+
+        <form class="country-form" action="#">
+          <p>
+            <label for="country">{{ _('Your country') }}</label>
+            <select id="country" name="country">
+              <option value="" disabled selected>{{ _('I live in&hellip;') }}</option>
+              <option value="ar">Albania</option>
+              <option value="br">Brazil</option>
+              <option value="cz">Czech Republic</option>
+              <option value="dk">Denmark</option>
+              <option value="ec">Ecuador</option>
+              <option value="fi">Finland</option>
+              <option value="ga">Guatamala</option>
+              <option value="hu">Hungary</option>
+              <option value="id">Indonesia</option>
+              <option value="jp">Japan</option>
+              <option value="kl">Kuala Lumpur</option>
+              <option value="etc">and so on</option>
+            </select>
+            <button type="submit">{{ _('Go') }}</button>
+          </p>
+        </form>
+
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="page-title">{{ _('Community Events') }}</h1>
+
+      <ul class="head-stats">
+        <li><strong>7,586</strong> {{ _('active worldwide Mozillians') }}</li>
+        <li><strong>154</strong> {{ _('upcoming events around the globe') }}</li>
+        <li><strong>80</strong> {{ _('Mozillians nearby you can connect with') }}</li>
+      </ul>
+    </div>
+  </header>
+
+  <div id="map">
+  <!-- map -->
+  </div>
+
+  <section class="section events-list">
+    <div class="container">
+
+    <div class="events-head">
+      <form id="events-filter" method="get" action="#">
+        <fieldset>
+          <legend>Find events</legend>
+
+          <p class="filter">
+            <label for="filter-keyword">By city, country, or event:</label>
+            <input type="search" id="filter-keyword" name="keyword">
+          </p>
+
+          <p class="filter">
+            <label for="filter-date-mo">By date:</label>
+            <select id="filter-date-mo" name="month">
+              <option value="" selected>-- Month --</option>
+              <option>January</option>
+              <option>February</option>
+              <option>March</option>
+              <option>April</option>
+              <option>May</option>
+              <option>June</option>
+              <option>July</option>
+              <option>August</option>
+              <option>September</option>
+              <option>October</option>
+              <option>November</option>
+              <option>December</option>
+            </select>
+            <select id="filter-date-yr" name="year">
+              <option value="" selected>-- Year --</option>
+              <option>2011</option>
+              <option>2012</option>
+              <option>2013</option>
+              <option>2014</option>
+              <option>2015</option>
+              <option>2016</option>
+            </select>
+          </p>
+
+          <p class="form-submit">
+            <button type="button" class="button-flat">
+              Find Events
+            </button>
+          </p>
+        </fieldset>
+      </form>
+    </div>
+
+    <h3>Events</h3>
+    <table class="events-table">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col" class="event-name">Event</th>
+          <th scope="col">City</th>
+          <th scope="col">Country</th>
+          <th scope="col" class="tick">Moz Space</th>
+          <th scope="col"class="tick">Online</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><time datetime="2014-07-17">17 July, 2014</time></td>
+          <th class="event-name" scope="row"><a href="#">Hack the Web</a></th>
+          <td>Bucharest</td>
+          <td>Romania</td>
+          <td class="tick"><span class="no">No</span></td>
+          <td class="tick"><span class="yes">Yes</span></td>
+        </tr>
+
+        <tr>
+          <td><time datetime="2014-07-17">17 July, 2014</time></td>
+          <th class="event-name" scope="row"><a href="#">Maker Party</a></th>
+          <td>Berlin</td>
+          <td>Germany</td>
+          <td class="tick"><span class="yes">Yes</span></td>
+          <td class="tick"><span class="no">No</span></td>
+        </tr>
+
+        <tr>
+          <td><time datetime="2014-07-30">30 July, 2014</time></td>
+          <th class="event-name" scope="row"><a href="#">QMO Test Day</a></th>
+          <td>Mountain View</td>
+          <td>USA</td>
+          <td class="tick"><span class="yes">Yes</span></td>
+          <td class="tick"><span class="yes">Yes</span></td>
+        </tr>
+
+        <tr>
+          <td><time datetime="2014-08-06">6</time>-<time datetime="2014-08-08">8 August, 2014</time></td>
+          <th class="event-name" scope="row"><a href="#">MozCamp Asia</a></th>
+          <td>Singapore</td>
+          <td>Singapore</td>
+          <td class="tick"><span class="no">No</span></td>
+          <td class="tick"><span class="no">No</span></td>
+        </tr>
+
+        <tr>
+          <td><time datetime="2014-07-30">10 August, 2014</time></td>
+          <th class="event-name" scope="row"><a href="#">Firefox OS apps hacking</a></th>
+          <td>Madrid</td>
+          <td>Spain</td>
+          <td class="tick"><span class="no">No</span></td>
+          <td class="tick"><span class="no">No</span></td>
+        </tr>
+
+        <tr>
+          <td><time datetime="2014-07-17">17 July, 2014</time></td>
+          <th class="event-name" scope="row"><a href="#">Hack the Web</a></th>
+          <td>Bucharest</td>
+          <td>Romania</td>
+          <td class="tick"><span class="no">No</span></td>
+          <td class="tick"><span class="yes">Yes</span></td>
+        </tr>
+
+        <tr>
+          <td><time datetime="2014-07-17">17 July, 2014</time></td>
+          <th class="event-name" scope="row"><a href="#">Maker Party</a></th>
+          <td>Berlin</td>
+          <td>Germany</td>
+          <td class="tick"><span class="yes">Yes</span></td>
+          <td class="tick"><span class="no">No</span></td>
+        </tr>
+
+        <tr>
+          <td><time datetime="2014-07-30">30 July, 2014</time></td>
+          <th class="event-name" scope="row"><a href="#">QMO Test Day</a></th>
+          <td>Mountain View</td>
+          <td>USA</td>
+          <td class="tick"><span class="yes">Yes</span></td>
+          <td class="tick"><span class="yes">Yes</span></td>
+        </tr>
+
+        <tr>
+          <td><time datetime="2014-08-06">6</time>-<time datetime="2014-08-08">8 August, 2014</time></td>
+          <th class="event-name" scope="row"><a href="#">MozCamp Asia</a></th>
+          <td>Singapore</td>
+          <td>Singapore</td>
+          <td class="tick"><span class="no">No</span></td>
+          <td class="tick"><span class="no">No</span></td>
+        </tr>
+
+        <tr>
+          <td><time datetime="2014-07-30">10 August, 2014</time></td>
+          <th class="event-name" scope="row"><a href="#">Firefox OS apps hacking</a></th>
+          <td>Madrid</td>
+          <td>Spain</td>
+          <td class="tick"><span class="no">No</span></td>
+          <td class="tick"><span class="no">No</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    </div>
+  </section>
+
+  <section class="section volunteer-extra">
+    <div class="container">
+
+      <div class="extra-event">
+        <h3>{{ _('Next event') }}</h3>
+        <a class="event-link" href="#">
+          <div class="event-map">
+            <time class="event-date" datetime="28-09-2014"><abbr class="date-month" title="September">Sep</abbr> <span class="date-day">28</span></time>
+            <img src="{{ media('img/volunteer/mapsmall-fpo.png') }}" alt="">
+          </div>
+          <h4 class="event-title">Translating Firefox OS</h4>
+          <p class="event-info"><span class="event-venue">Caixaforum</span> &middot; <span class="event-location">Madrid, Spain</span></p>
+        </a>
+        <p class="events-all"><a href="{{ url('mozorg.contribute.events') }}">{{ _('See all events') }}</a></p>
+      </div>
+
+      <div class="extra-links">
+        <h3>{{ _('Communicate') }}</h3>
+        <ul>
+          <li><a href="#">{{ _('Mozilla communities') }}</a></li>
+          <li><a href="#">{{ _('Mailing lists') }}</a></li>
+          <li><a href="#">{{ _('IRC channels') }}</a></li>
+        </ul>
+
+        <h3>{{ _('More links') }}</h3>
+        <ul>
+          <li><a href="#">{{ _('Firefox feedback') }}</a></li>
+          <li><a href="#">{{ _('Mozilla careers') }}</a></li>
+          <li><a href="#">{{ _('Need help with Firefox?') }}</a></li>
+        </ul>
+      </div>
+
+      <div class="extra-newsletter">
+        <h3>Newsletter form goes here</h3>
+      </div>
+
+      <p class="attribution">
+      {% trans link_mapbox='http://mapbox.com', link_openstreetmap='http://openstreetmap.org/copyright' %}
+        Maps © by <a href="{{ link_mapbox }}">MapBox</a> and <a href="{{ link_openstreetmap }}">OpenStreetMap</a> contributors.
+      {% endtrans %}
+      </p>
+
+    </div>
+  </section>
+
+</main>
+{% endblock %}
+
+{% block email_form %}{% endblock %}
+

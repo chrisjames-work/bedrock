@@ -10,11 +10,18 @@
 
 {% block contrib_page_title %}{{ _('Volunteer with Mozilla!') }}{% endblock %}
 
+{% block string_data %}
+  {# L10n: Used as a toggle to display more content. #}
+  data-more='{{_('More')}}'
+  {# L10n: Used as a toggle to display less content. #}
+  data-less='{{_('Less')}}'
+{% endblock %}
+
 {% block contrib_content %}
   <section class="section stories-intro">
     <div class="container">
-      <h2 class="section-title">{{ _('#IAmAMozillian') }}</h2>
-      <p class="section-tagline">{{ _('Meet Mozilla volunteers from all around the world. Learn about the projects they’ve worked on and see what they’re currently helping with.') }}</p>
+      <h2 class="section-title">#IAmAMozillian</h2>
+      <p class="section-tagline">Meet Mozilla volunteers from all around the world. Learn about the projects they’ve worked on and see what they’re currently helping with.</p>
     </div>
   </section>
 
@@ -27,22 +34,20 @@
       <div class="story-intro">
         <img class="photo" src="{{ media('img/volunteer/person-fpo.png') }}" alt="">
         <p>
-        {% trans %}
-          I’ve been collaborating with the Mozilla community since 2004, helping with
-          website localization, QA, user support and community marketing. I’ve also
-          helped organize events in Spain and performed IT tasks within the Mozilla
-          Hispano community.
-        {% endtrans %}
+          I’ve been collaborating with the Mozilla community since 2004, helping
+          with website localization, QA, user support and community marketing. I’ve
+          also helped organize events in Spain and performed IT tasks within the
+          Mozilla Hispano community.
         </p>
       </div>
 
       <div class="story-areas">
-        <h3>{{ _('I’m currently helping with:') }}</h3>
+        <h3>I’m currently helping with:</h3>
         <ul>
-          <li>{{ _('Mozilla.org localization') }}</li>
-          <li>{{ _('Firefox OS launch in Spain') }}</li>
-          <li>{{ _('Mozilla Hispano mentorship program') }}</li>
-          <li>{{ _('Community events') }}</li>
+          <li>Mozilla.org localization</li>
+          <li>Firefox OS launch in Spain</li>
+          <li>Mozilla Hispano mentorship program</li>
+          <li>Community events</li>
         </ul>
       </div>
 
@@ -50,10 +55,7 @@
         <li><a href="#" class="twitter">@nukeador</a></li>
         <li><a href="#" class="instragram">Instragram</a></li>
         <li><a href="#" class="facebook">Facebook</a></li>
-        <li><a href="#" class="email">nukeador@example.com</a></li>
       </ul>
-
-      <div class="more-toggle"><a href="#" role="button">{{ _('More') }}</a></div>
 
       <section class="story-more">
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit.
@@ -111,5 +113,5 @@
       </ul>
     </div>
   </section>
-{% endblock %}
+{% endblock contrib_content %}
 

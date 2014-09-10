@@ -165,8 +165,8 @@ urlpatterns = patterns('',
     page('contact/communities/uganda', 'mozorg/contact/communities/uganda.html'),
     page('contact/communities/zimbabwe', 'mozorg/contact/communities/zimbabwe.html'),
 
-    page('contribute/inquiry', 'mozorg/contribute/inquiry.html'),
-    page('contribute/confirm', 'mozorg/contribute/confirm.html'),
+    page('contribute/signup', 'mozorg/contribute/signup.html'),
+    page('contribute/thankyou', 'mozorg/contribute/thankyou.html'),
     page('contribute/events', 'mozorg/contribute/events.html'),
     page('contribute/stories', 'mozorg/contribute/stories.html'),
 

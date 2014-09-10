@@ -27,8 +27,10 @@
 
     <div class="container">
       {# L10n: This <br> is presentational. #}
-      <h1 class="page-title">{{ _('Thanks! We can’t wait<br> to get you started.') }}</h1>
-      <h2 class="section-tagline">{{ _('Keep an eye on your inbox for an important message from us') }}</h2>
+      <h1 class="page-title">{{ _('Thanks!') }}</h1>
+      <p class="section-tagline">
+        We’re thrilled to see that you’re interested in volunteering and can’t wait to get you started. Keep an eye on your inbox for an important message from us.
+      </p>
     </div>
   </header>
 
@@ -36,9 +38,9 @@
     <div class="container">
       <div class="confirm-body">
         <div class="mozillians-profile"></div>
-        <h2 class="section-title">In the meantime&hellip;</h2>
-        <p class="section-tagline">You can create your Mozillians account now to connect with fellow Mozillians.</p>
-        <p class="cta-other"><a href="#other" role="button" aria-controls="other">No thanks, I’ll just wait for the email</a></p>
+        <h2 class="section-title">{{ _('In the meantime&hellip;') }}</h2>
+        <p class="section-tagline">{{ _('You can create your Mozillians account now to connect with fellow Mozillians.' ) }}</p>
+        <p class="cta-other"><a href="#other" role="button" aria-controls="other">{{ _('No thanks, I’ll just wait for the email') }}</a></p>
 
         <aside id="other">
           <h3>{{ _('Here are a few other ways you can support Mozilla right now.') }}</h3>
@@ -50,13 +52,13 @@
           </ul>
         </aside>
 
-        <p class="cta-mozillians"><a href="#">Yes, create my Mozillians account *</a></p>
-        <p class="note">* You will be asked to sign in before proceeding</p>
+        <p class="cta-mozillians"><a href="#">{{ _('Yes, create my Mozillians account') }} *</a></p>
+        <p class="note">* {{ _('You will be asked to sign in before proceeding') }}</p>
       </div>
     </div>
   </section>
 
 
 </main>
-{% endblock %}
+{% endblock content %}
 

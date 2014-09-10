@@ -17,19 +17,26 @@
         return false;
     });
 
-    $('.cta-other a').on('click', function() {
+    $('.cta-other a').on('click', function(e) {
+        e.preventDefault();
         $('#other').slideDown();
     });
 
-    $('.more-toggle a').on('click', function() {
-       $('.story-more').slideToggle('fast', function() {
-            if ($('.story-more').is(':visible')) {
-                $('.more-toggle a').addClass('open').text('Less');
-            } else {
-                $('.more-toggle a').removeClass('open').text('More');
-            }
-       });
-    });
+
+    if ($('.story-more').length > 0) {
+        var $more_toggle = $('<div class="more-toggle"><button>' + window.trans('more') + '</button></div>');
+        $more_toggle.insertBefore('.story-more');
+
+        $('.more-toggle button').on('click', function() {
+           $('.story-more').slideToggle('fast', function() {
+                if ($('.story-more').is(':visible')) {
+                    $('.more-toggle button').addClass('open').text(window.trans('less'));
+                } else {
+                    $('.more-toggle button').removeClass('open').text(window.trans('more'));
+                }
+           });
+        });
+    }
 
     $('a.video-play').attr('role', 'button').on('click', function(e) {
         e.preventDefault();
@@ -52,8 +59,25 @@
         }, 400);
     };
 
+    $('#inquiry-form input[name="category"]').on('change', function(){
+        var $this = $(this);
+        // Get the area IDs
+        var $areas = $('#inquiry-form .area').map(function(index){ return this.id; });
+
+        if ($.inArray('area-' + $this.attr('value'), $areas) !== -1) {
+            if ($('.areas').is(':hidden')) {
+                $('.areas').slideDown('fast');
+            }
+            $('.area').hide();
+            $('#area-' + $this.attr('value')).fadeIn('fast');
+        } else {
+            $('.areas, .area').slideUp('fast');
+        }
+
+    });
 
 
+/*
     var ltr = document.dir === 'ltr';
 
     // Set up the modal navigation
@@ -166,7 +190,7 @@
             nav_modal(direction);
         }
     });
-
+*/
 
 
 })(window.jQuery);

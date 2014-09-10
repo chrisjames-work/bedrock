@@ -14,6 +14,22 @@
 
 {% block body_id %}landing{% endblock %}
 
+{% block string_data %}
+  {# L10n: Used as a label for a button that plays a video. #}
+  data-button-play='{{_('Play video')}}'
+  {# L10n: Used as a label for a button that pauses a video. #}
+  data-button-pause='{{_('Pause video')}}'
+{% endblock %}
+
+{% block js %}
+  {% if l10n_has_tag('contribute-2015') or settings.DEV %}
+    {{ js('contribute-2015') }}
+  {% else %}
+    {{ js('contribute') }}
+  {% endif %}
+    {{ js('contribute-form') }}
+{% endblock %}
+
 {% block contrib_nav_cta %}{% endblock %}
 
 {% block contrib_page_title %}{{ _('Volunteer with Mozilla!') }}{% endblock %}
@@ -33,7 +49,7 @@
       <div class="slide slide-two">
         <div class="container">
           {# L10n: This <br> is presentational. #}
-          <p class="section-title">{{ _('Volunteer a little. Volunteer a lot.<br> It’s up to you.') }}</p>
+          <p class="section-title">{{ _('Volunteer as much as you like. Or as little.<br> It’s totally up to you.') }}</p>
         </div>
       </div>
 
@@ -44,7 +60,7 @@
         </div>
       </div>
 
-      <p class="cta"><a href="{{ url('mozorg.contribute.inquiry') }}">{{ _('Get Involved') }}</a></p>
+      <p class="cta"><a href="{{ url('mozorg.contribute.signup') }}">{{ _('Get Involved') }}</a></p>
 
       <div class="cycle-pager"></div>
     </div>
@@ -53,8 +69,17 @@
   <section class="section landing-mission">
     <div class="container">
       <div class="mission-content">
-        <p class="section-tagline">{{ _('We’re working to build the Internet the world needs, but we can’t do it without amazing people like you.') }}</p>
-        <p class="cta"><a class="video-play" href="//videos.cdn.mozilla.net/uploads/mozillaorg/Mozilla_2014_i_am.webm" data-element-id="video-iamamozillian" data-title="{{ _('I Am a Mozillian') }}">{{ _('Watch the video') }}</a></p>
+        <p>
+        {% trans %}
+          When you volunteer with Mozilla, you become part of a global community with a
+          shared mission: to help build the Internet the world needs. It’s important work,
+          but even more important are the people you’ll be collaborating with, learning
+          from and sharing your skills with. We call them Mozillians. They are the coders,
+          the organizers, the activists, and more. They are the backbone, and at the heart,
+          of everything we do.
+        {% endtrans %}
+        </p>
+        <p class="cta"><a class="video-play" href="//videos.cdn.mozilla.net/uploads/mozillaorg/Mozilla_2014_i_am.webm" data-element-id="video-iamamozillian" data-title="{{ _('I Am a Mozillian') }}">{{ _('See what being a Mozillian is all about') }}</a></p>
       </div>
 
       <div class="mission-video">
@@ -116,10 +141,10 @@
       <h2 class="section-title">{{ _('Want to get involved? Here’s how.') }}</h2>
       <ol class="steps">
         <li class="step1">{{ _('Choose what interests you and tell us how you’d like to help') }}</li>
-        <li class="step2">{{ _('We’ll send you an email and connect you with your local Mozilla community') }}</li>
-        <li class="step3">{{ _('Create your Mozillians account right away — or do it later if you like') }}</li>
+        <li class="step2">{{ _('Stand by for an email that will connect you to the Mozilla community') }}</li>
+        <li class="step3">{{ _('Create your Mozillians account and share your contributions with the world') }}</li>
       </ol>
-      <p class="cta"><a href="{{ url('mozorg.contribute.inquiry') }}">{{ _('Get started') }}</a></p>
+      <p class="cta"><a href="{{ url('mozorg.contribute.signup') }}">{{ _('Get started') }}</a></p>
     </div>
   </section>
 
@@ -436,5 +461,5 @@
 
 {% endif %}
 
-{% endblock %}
+{% endblock contrib_content %}
 

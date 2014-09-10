@@ -25,17 +25,8 @@
 {% block js %}
   {% if l10n_has_tag('contribute-2015') or settings.DEV %}
     {{ js('contribute-2015') }}
-  {% else %}
-    {{ js('contribute') }}
   {% endif %}
-  {{ js('contribute-form') }}
-{% endblock %}
-
-{% block string_data %}
-  {# L10n: Used as a label for a button that plays a video. #}
-  data-button-play='{{_('Play video')}}'
-  {# L10n: Used as a label for a button that pauses a video. #}
-  data-button-pause='{{_('Pause video')}}'
+    {{ js('contribute-form') }}
 {% endblock %}
 
 {% if l10n_has_tag('contribute-2015') or settings.DEV %}
@@ -59,8 +50,8 @@
             <li class="nav-events"><a href="{{ url('mozorg.contribute.events') }}">{{ _('Find<br> an event') }}</a></li>
             <li class="nav-stories"><a href="{{ url('mozorg.contribute.stories') }}">{{ _('Meet<br> Mozillians') }}</a></li>
             {% block contrib_nav_cta %}
-            <li class="nav-cta"><a href="{{ url('mozorg.contribute.inquiry') }}">{{ _('Get involved') }}</a></li>
-            {% endblock %}
+            <li class="nav-cta"><a href="{{ url('mozorg.contribute.signup') }}">{{ _('Get involved') }}</a></li>
+            {% endblock contrib_nav_cta %}
           </ul>
         </nav>
 
@@ -88,7 +79,7 @@
             <button type="submit">{{ _('Go') }}</button>
           </p>
         </form>
-        {% endblock %}
+        {% endblock contrib_country_form %}
       </div>
     </div>
 
@@ -98,19 +89,19 @@
       {% block contrib_stats %}
       <ul class="head-stats">
         {# L10n: This label accompanies a numeric count. The number appears first so phrase translations accordingly. #}
-        <li><strong>7,586</strong> {{ _('active worldwide Mozillians') }}</li>
+        <li class="stat-worldwide"><strong>7,586</strong> {{ _('active worldwide Mozillians') }}</li>
         {# L10n: This label accompanies a numeric count. The number appears first so phrase translations accordingly. #}
-        <li><strong>154</strong> {{ _('upcoming events around the globe') }}</li>
+        <li class="stat-events"><strong>154</strong> {{ _('upcoming events around the globe') }}</li>
         {# L10n: This label accompanies a numeric count. The number appears first so phrase translations accordingly. #}
-        <li><strong>80</strong> {{ _('Mozillians nearby you can connect with') }}</li>
+        <li class="stat-local"><strong>80</strong> {{ _('Mozillians nearby you can connect with') }}</li>
       </ul>
-      {% endblock %}
+      {% endblock contrib_stats %}
     </div>
   </header>
-  {% endblock %}
+  {% endblock contrib_head %}
 {% endif %}
 
-  {% block contrib_content %}{% endblock %}
+  {% block contrib_content %}{% endblock contrib_content %}
 
 {% if l10n_has_tag('contribute-2015') or settings.DEV %}
   {% block contrib_footer %}
@@ -154,10 +145,10 @@
 
     </div>
   </section>
-  {% endblock %}
+  {% endblock contrib_footer %}
 {% endif %}
 
 </main>
-{% endblock %}
+{% endblock content %}
 
 {% block email_form %}{% endblock %}

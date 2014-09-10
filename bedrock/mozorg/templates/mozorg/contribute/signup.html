@@ -19,51 +19,139 @@
       <h2 class="section-title">{{ _('How to get involved') }}</h2>
       <ol class="steps">
         <li class="step1">{{ _('Choose what interests you and tell us how you’d like to help') }}</li>
-        <li class="step2">{{ _('We’ll send you an email and connect you with your local Mozilla community') }}</li>
-        <li class="step3">{{ _('Create your Mozillians account right away — or do it later if you like') }}</li>
+        <li class="step2">{{ _('Stand by for an email that will connect you to the Mozilla community') }}</li>
+        <li class="step3">{{ _('Create your Mozillians account and share your contributions with the world') }}</li>
       </ol>
     </div>
   </section>
 
   <section class="section inquiry-form">
-    <form class="container" id="inquiry-form" method="GET" action="{{ url('mozorg.contribute.confirm') }}">
-    <fieldset class="areas">
+    <form class="container" id="inquiry-form" method="GET" action="{{ url('mozorg.contribute.thankyou') }}">
+    <fieldset class="categories">
       <h2 class="section-title">{{ _('Tell us what interests you:') }}</h2>
       <p class="section-tagline">{{ _('Choose one for now. You can always contribute to other areas later.') }}</p>
       <ul class="option-list">
         <li class="option">
-          <label for="area-coding"><input type="radio" name="area" id="area-coding" value="coding"> <span class="label-text">{{ _('Coding') }}</span></label>
+          <label for="category-coding">
+            <input type="radio" name="category" id="category-coding" value="coding">
+            <span class="label-text">{{ _('Coding') }}</span>
+          </label>
           <a class="info" href="#info-coding" title="{{ _('More about coding') }}" data-title="{{ _('More information') }}">{{ _('More about coding') }}</a>
         </li>
         <li class="option">
-          <label for="area-testing"><input type="radio" name="area" id="area-testing" value="testing"> <span class="label-text">{{ _('Testing') }}</span></label>
+          <label for="category-testing">
+            <input type="radio" name="category" id="category-testing" value="testing">
+            <span class="label-text">{{ _('Testing') }}</span>
+          </label>
           <a class="info" href="#info-testing" title="{{ _('More about testing') }}" data-title="{{ _('More information') }}">{{ _('More about testing') }}</a>
         </li>
         <li class="option">
-          <label for="area-writing"><input type="radio" name="area" id="area-writing" value="writing"> <span class="label-text">{{ _('Writing') }}</span></label>
+          <label for="category-writing">
+            <input type="radio" name="category" id="category-writing" value="writing">
+            <span class="label-text">{{ _('Writing') }}</span>
+          </label>
           <a class="info" href="#info-writing" title="{{ _('More about writing') }}" data-title="{{ _('More information') }}">{{ _('More about writing') }}</a>
         </li>
         <li class="option">
-          <label for="area-teaching"><input type="radio" name="area" id="area-teaching" value="teaching"> <span class="label-text">{{ _('Teaching') }}</span></label>
+          <label for="category-teaching">
+            <input type="radio" name="category" id="category-teaching" value="teaching">
+            <span class="label-text">{{ _('Teaching') }}</span>
+          </label>
           <a class="info" href="#info-teaching" title="{{ _('More about teaching') }}" data-title="{{ _('More information') }}">{{ _('More about teaching') }}</a>
         </li>
         <li class="option">
-          <label for="area-helping"><input type="radio" name="area" id="area-helping" value="helping"> <span class="label-text">{{ _('Helping') }}</span></label>
+          <label for="category-helping">
+            <input type="radio" name="category" id="category-helping" value="helping">
+            <span class="label-text">{{ _('Helping') }}</span>
+          </label>
           <a class="info" href="#info-helping" title="{{ _('More about helping') }}" data-title="{{ _('More information') }}">{{ _('More about helping') }}</a>
         </li>
         <li class="option">
-          <label for="area-localization"><input type="radio" name="area" id="area-localization" value="localization"> <span class="label-text">{{ _('Localization') }}</span></label>
+          <label for="category-localization">
+            <input type="radio" name="category" id="category-localization" value="localization">
+            <span class="label-text">{{ _('Localization') }}</span>
+          </label>
           <a class="info" href="#info-localization" title="{{ _('More about localization') }}" data-title="{{ _('More information') }}">{{ _('More about localization') }}</a>
         </li>
         <li class="option">
-          <label for="area-activism"><input type="radio" name="area" id="area-activism" value="advocacy"> <span class="label-text">{{ _('Activism') }}</span></label>
+          <label for="category-activism">
+            <input type="radio" name="category" id="category-activism" value="advocacy">
+            <span class="label-text">{{ _('Activism') }}</span>
+          </label>
           <a class="info" href="#info-activism" title="{{ _('More about activism') }}" data-title="{{ _('More information') }}">{{ _('More about activism') }}</a>
         </li>
         <li class="option">
-          <label for="area-dontknow"><input type="radio" name="area" id="area-dontknow" value="dontknow"> <span class="label-text">{{ _('I don’t know') }}</span></label>
+          <label for="category-dontknow">
+            <input type="radio" name="category" id="category-dontknow" value="dontknow">
+            <span class="label-text">{{ _('I don’t know') }}</span>
+          </label>
           <a class="info" href="#info-dontknow" title="{{ _('Learn more about how you can contribute') }}" data-title="{{ _('More information') }}">{{ _('Learn more about how you can contribute') }}</a>
         </li>
       </ul>
+    </fieldset>
+
+    <fieldset class="areas">
+      <h3>{{ _('What particular area?') }}</h3>
+
+      <p class="area" id="area-coding">
+        <label for="select-area-coding">{{ _('Coding') }}</label>
+        <select id="select-area-coding" name="area-coding">
+          <option value="" selected disabled>-- {{ _('select') }} --</option>
+          <option value="coding-firefox">{{ _('Firefox') }}</option>
+          <option value="coding-firefoxos">{{ _('Firefox OS') }}</option>
+          <option value="coding-websites">{{ _('Websites') }}</option>
+          <option value="coding-addons">{{ _('Firefox add-ons') }}</option>
+          <option value="coding-marketplace">{{ _('HTML5 apps') }}</option>
+          <option value="coding-webcompat">{{ _('Diagnosing Web compatability issues') }}</option>
+          <option value="coding-cloud">{{ _('Online services') }}</option>
+        </select>
+      </p>
+
+      <p class="area" id="area-testing">
+        <label for="select-area-testing">{{ _('Testing') }}</label>
+        <select id="select-area-testing" name="area-testing">
+          <option value="" selected disabled>-- {{ _('select') }} --</option>
+          <option value="testing-firefox">{{ _('Firefox and Firefox OS') }}</option>
+          <option value="testing-addons">{{ _('Firefox add-ons') }}</option>
+          <option value="testing-marketplace">{{ _('HTML5 apps') }}</option>
+          <option value="testing-websites">{{ _('Websites') }}</option>
+          <option value="testing-webcompat">{{ _('Web compatability') }}</option>
+        </select>
+      </p>
+
+      <p class="area" id="area-localization">
+        <label for="select-area-localization">{{ _('Localization') }}</label>
+        <select id="select-area-localization" name="area-localization">
+          <option value="" selected disabled>-- {{ _('select') }} --</option>
+          <option value="localization-products">{{ _('Products') }}</option>
+          <option value="localization-websites">{{ _('Websites') }}</option>
+          <option value="localization-tools">{{ _('Localization Tools') }}</option>
+        </select>
+      </p>
+
+      <p class="area" id="area-writing">
+        <label for="select-area-writing">{{ _('Writing') }}</label>
+        <select id="select-area-writing" name="area-writing">
+          <option value="" selected disabled>-- {{ _('select') }} --</option>
+          <option value="writing-social">{{ _('Social Media') }}</option>
+          <option value="writing-journalism">{{ _('Journalism') }}</option>
+          <option value="writing-techusers">{{ _('Technical docs for users') }}</option>
+          <option value="writing-techdevs">{{ _('Technical docs for developers') }}</option>
+          <option value="writing-addons">{{ _('Technical docs for Firefox add-ons') }}</option>
+          <option value="writing-marketplace">{{ _('Technical docs for HTML5 apps') }}</option>
+        </select>
+      </p>
+
+      <p class="area" id="area-teaching">
+        <label for="select-area-teaching">{{ _('Teaching') }}</label>
+        <select id="select-area-teaching" name="area-teaching">
+          <option value="" selected disabled>-- {{ _('select') }} --</option>
+          <option value="teaching-webmaker">{{ _('Teach the Web (Webmaker)') }}</option>
+          <option value="teaching-fellowships">{{ _('Open News fellowships') }}</option>
+          <option value="teaching-hive">{{ _('Hive - Community based digital education') }}</option>
+          <option value="teaching-science">{{ _('Make the Web Work for Science') }}</option>
+        </select>
+      </p>
     </fieldset>
 
     <fieldset class="personal">
@@ -333,20 +421,22 @@
           <label for="person-message">{{ _('Why do you want to be a Mozilla volunteer?') }} <i>{{ _('(Optional)') }}</i></label>
           <textarea id="person-message" cols="60" rows="4" name="message"></textarea>
         </li>
-        <li class="form-submit">
-          <button type="submit" class="button-flat">{{ _('Start contributing') }}</button>
-        </li>
-        <li class="form-newsletter">
-          <label class="inline" for="person-newsletter">
-            <input type="checkbox" id="person-newsletter" name="newsletter"> {{ _('Sign me up for community updates') }}
-          </label>
-        </li>
       </ul>
+    </fieldset>
+
+    <fieldset class="submit">
+      <p class="form-newsletter">
+        <label class="inline" for="submit-newsletter">
+          <input type="checkbox" id="submit-newsletter" name="newsletter"> {{ _('Sign me up for community updates') }}
+        </label>
+      </p>
+
+      <button type="submit">{{ _('Start contributing') }}</button>
     </fieldset>
   </form>
 
   <aside class="container category-info">
-    <h2>{{ _('What are you interested in?') }}</h2>
+    <h2>{{ _('Where would you like to get started?') }}</h2>
 
     <ul class="category-nav">
       <li><a href="#info-coding">{{ _('Coding') }}</a></li>
@@ -401,5 +491,5 @@
   </aside>
 
 </section>
-{% endblock %}
+{% endblock contrib_content %}
 

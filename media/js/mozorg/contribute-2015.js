@@ -17,6 +17,10 @@
         return false;
     });
 
+    $('.cta-other a').on('click', function() {
+        $('#other').slideDown();
+    });
+
     $('.more-toggle a').on('click', function() {
        $('.story-more').slideToggle('fast', function() {
             if ($('.story-more').is(':visible')) {
@@ -34,10 +38,10 @@
         var videoelem = $('#' + $this.attr('data-element-id'));
 
         Mozilla.Modal.createModal(this, videoelem, {
-          title: $this.attr('data-title'),
-          onCreate: function() {
-            play_video();
-          }
+            title: '',
+            onCreate: function() {
+                play_video();
+            }
         });
     });
 

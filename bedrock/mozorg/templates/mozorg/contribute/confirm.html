@@ -2,58 +2,61 @@
  # License, v. 2.0. If a copy of the MPL was not distributed with this
  # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
 
-{% extends "mozorg/base-resp.html" %}
+{% extends "mozorg/contribute/contribute-base.html" %}
 
-{% block page_title %}{{_('Thank you!: Volunteer Opportunities at Mozilla')}}{% endblock %}
-{% block body_id %}contribute{% endblock %}
-{% block body_class %}sand confirm{% endblock %}
+{% block page_title %}{{_('Thank you!')}}{% endblock %}
 
-{% block page_css %}
-  {{ css('contribute-2015') }}
-{% endblock %}
-
-{% block js %}
-  {{ js('contribute-2015') }}
-{% endblock %}
-
-{% block site_header_nav %}{% endblock %}
-{% block site_header_logo %}{% endblock %}
+{% block body_id %}confirm{% endblock %}
 
 {% block content %}
 <main role="main">
   <header class="page-head">
-    <nav class="volunteer-nav">
+    <div class="contribute-masthead">
+
       <div class="container">
-        <ul>
-          <li><a href="{{ url('mozorg.contribute') }}">{{ _('Volunteer overview') }}</a></li>
-          <li><a href="{{ url('mozorg.contribute.events') }}">{{ _('Worldwide events') }}</a></li>
-          <li><a href="{{ url('mozorg.contribute.stories') }}">{{ _('Mozillian stories') }}</a></li>
-        </ul>
+        <nav class="contribute-nav">
+          <span class="toggle" role="button" aria-controls="contribute-nav-menu" tabindex="0">{{_('Menu')}}</span>
+          <ul id="contribute-nav-menu">
+            <li class="nav-landing"><a href="{{ url('mozorg.contribute') }}">{{ _('Why<br> volunteer') }}</a></li>
+            <li class="nav-events"><a href="{{ url('mozorg.contribute.events') }}">{{ _('Find<br> an event') }}</a></li>
+            <li class="nav-stories"><a href="{{ url('mozorg.contribute.stories') }}">{{ _('Meet<br> Mozillians') }}</a></li>
+          </ul>
+        </nav>
       </div>
-    </nav>
+    </div>
 
     <div class="container">
-      <h1 class="page-title">Thanks! We can’t wait<br> to get you started.</h1>
-      <h2 class="section-tagline">Keep an eye on your inbox for an important message from a Mozilla mentor.</h2>
+      {# L10n: This <br> is presentational. #}
+      <h1 class="page-title">{{ _('Thanks! We can’t wait<br> to get you started.') }}</h1>
+      <h2 class="section-tagline">{{ _('Keep an eye on your inbox for an important message from us') }}</h2>
     </div>
   </header>
 
   <section class="section">
     <div class="container">
-      <div class=" confirm-body">
-      <div class="mozillians-profile"></div>
-      <h2 class="section-title">In the meantime&hellip;</h2>
-      <p class="section-tagline">You can unlock your Mozilla account now to connect with fellow Mozillians.</p>
-      <p class="cta"><a href="#" class="button-hollow">No thanks, I’ll just wait for the email</a></p>
-      <p class="cta"><a href="#" class="button-flat">Yes, unlock my Mozillians account *</a></p>
-      <p class="note">* You will be asked to sign in before proceeding</p>
-    </div>
+      <div class="confirm-body">
+        <div class="mozillians-profile"></div>
+        <h2 class="section-title">In the meantime&hellip;</h2>
+        <p class="section-tagline">You can create your Mozillians account now to connect with fellow Mozillians.</p>
+        <p class="cta-other"><a href="#other" role="button" aria-controls="other">No thanks, I’ll just wait for the email</a></p>
+
+        <aside id="other">
+          <h3>{{ _('Here are a few other ways you can support Mozilla right now.') }}</h3>
+          <ul class="other-actions">
+            <li><a href="https://sendto.mozilla.org/" class="other-donate">{{ _('Donate to Mozilla') }}</a></li>
+            <li><a href="{{ url('mozorg.about.manifesto') }}" class="other-read">{{ _('Read our Manifesto') }}</a></li>
+            <li><a href="https://gear.mozilla.org" class="other-shop">{{ _('Buy a Mozilla t-shirt') }}</a></li>
+            <li><a href="https://twitter.com/mozilla" class="other-twitter">{{ _('Follow us on Twitter') }}</a></li>
+          </ul>
+        </aside>
+
+        <p class="cta-mozillians"><a href="#">Yes, create my Mozillians account *</a></p>
+        <p class="note">* You will be asked to sign in before proceeding</p>
+      </div>
     </div>
   </section>
 
 
 </main>
 {% endblock %}
-
-{% block email_form %}{% endblock %}
 

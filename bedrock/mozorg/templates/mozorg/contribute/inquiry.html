@@ -2,66 +2,34 @@
  # License, v. 2.0. If a copy of the MPL was not distributed with this
  # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
 
-{% add_lang_files "mozorg/volunteer" %}
+{% extends "mozorg/contribute/contribute-base.html" %}
 
-{% extends "mozorg/base-resp.html" %}
+{% block body_id %}inquiry{% endblock %}
 
 {% block page_title %}{{_('Get Involved: Volunteer Opportunities at Mozilla')}}{% endblock %}
-{% block body_id %}contribute{% endblock %}
-{% block body_class %}sand inquiry{% endblock %}
 
-{% block page_css %}
-  {{ css('contribute-2015') }}
-{% endblock %}
+{% block contrib_page_title %}{{ _('Volunteer with Mozilla!') }}{% endblock %}
 
-{% block js %}
-  {{ js('contribute-2015') }}
-{% endblock %}
+{% block contrib_nav_cta %}{% endblock %}
+{% block contrib_country_form %}{% endblock %}
 
-{% block site_header_nav %}{% endblock %}
-{% block site_header_logo %}{% endblock %}
-
-{% block content %}
-<main role="main">
-  <header class="page-head">
-    <nav class="volunteer-nav">
-      <div class="container">
-        <ul>
-          <li><a href="{{ url('mozorg.contribute') }}">{{ _('Volunteer overview') }}</a></li>
-          <li><a href="{{ url('mozorg.contribute.events') }}">{{ _('Worldwide events') }}</a></li>
-          <li><a href="{{ url('mozorg.contribute.stories') }}">{{ _('Mozillian stories') }}</a></li>
-        </ul>
-
-      </div>
-    </nav>
-
-    <div class="container">
-      <h1 class="page-title">{{ _('Volunteer with Mozilla!') }}</h1>
-
-      <ul class="head-stats">
-        <li><strong>7,586</strong> {{ _('active worldwide Mozillians') }}</li>
-        <li><strong>154</strong> {{ _('upcoming events around the globe') }}</li>
-        <li><strong>80</strong> {{ _('Mozillians nearby you can connect with') }}</li>
-      </ul>
-    </div>
-  </header>
-
+{% block contrib_content %}
   <section class="section inquiry-intro">
     <div class="container">
       <h2 class="section-title">{{ _('How to get involved') }}</h2>
       <ol class="steps">
-        <li class="step1">{{ _('First, choose what interests you and tell us how you’d like to help.') }}</li>
-        <li class="step2">{{ _('Then, check your email! We’ll connect you with the Mozilla community to get you started.') }}</li>
-        <li class="step3">{{ _('You can create your Mozillian profile right away.') }} <i>{{ _('(Optional)') }}</i></li>
+        <li class="step1">{{ _('Choose what interests you and tell us how you’d like to help') }}</li>
+        <li class="step2">{{ _('We’ll send you an email and connect you with your local Mozilla community') }}</li>
+        <li class="step3">{{ _('Create your Mozillians account right away — or do it later if you like') }}</li>
       </ol>
     </div>
   </section>
 
   <section class="section inquiry-form">
-
     <form class="container" id="inquiry-form" method="GET" action="{{ url('mozorg.contribute.confirm') }}">
     <fieldset class="areas">
       <h2 class="section-title">{{ _('Tell us what interests you:') }}</h2>
+      <p class="section-tagline">{{ _('Choose one for now. You can always contribute to other areas later.') }}</p>
       <ul class="option-list">
         <li class="option">
           <label for="area-coding"><input type="radio" name="area" id="area-coding" value="coding"> <span class="label-text">{{ _('Coding') }}</span></label>
@@ -72,8 +40,7 @@
           <a class="info" href="#info-testing" title="{{ _('More about testing') }}" data-title="{{ _('More information') }}">{{ _('More about testing') }}</a>
         </li>
         <li class="option">
-          {# L10n: The <i></i> acts as a supplemental label; you can omit this if your translation of the main label makes it redundant. #}
-          <label for="area-writing"><input type="radio" name="area" id="area-writing" value="writing"> <span class="label-text">{{ _('Writing <i>(Documentation)</i>') }}</span></label>
+          <label for="area-writing"><input type="radio" name="area" id="area-writing" value="writing"> <span class="label-text">{{ _('Writing') }}</span></label>
           <a class="info" href="#info-writing" title="{{ _('More about writing') }}" data-title="{{ _('More information') }}">{{ _('More about writing') }}</a>
         </li>
         <li class="option">
@@ -81,8 +48,7 @@
           <a class="info" href="#info-teaching" title="{{ _('More about teaching') }}" data-title="{{ _('More information') }}">{{ _('More about teaching') }}</a>
         </li>
         <li class="option">
-          {# L10n: The <i></i> acts as a supplemental label; you can omit this if your translation of the main label makes it redundant. #}
-          <label for="area-helping"><input type="radio" name="area" id="area-helping" value="helping"> <span class="label-text">{{ _('Helping <i>(Support)</i>') }}</span></label>
+          <label for="area-helping"><input type="radio" name="area" id="area-helping" value="helping"> <span class="label-text">{{ _('Helping') }}</span></label>
           <a class="info" href="#info-helping" title="{{ _('More about helping') }}" data-title="{{ _('More information') }}">{{ _('More about helping') }}</a>
         </li>
         <li class="option">
@@ -385,11 +351,9 @@
     <ul class="category-nav">
       <li><a href="#info-coding">{{ _('Coding') }}</a></li>
       <li><a href="#info-testing">{{ _('Testing') }}</a></li>
-      {# L10n: The <i></i> acts as a supplemental label; you can omit this if your translation of the main label makes it redundant. #}
-      <li><a href="#info-writing">{{ _('Writing <i>(Documentation)</i>') }}</a></li>
+      <li><a href="#info-writing">{{ _('Writing') }}</a></li>
       <li><a href="#info-teaching">{{ _('Teaching') }}</a></li>
-      {# L10n: The <i></i> acts as a supplemental label; you can omit this if your translation of the main label makes it redundant. #}
-      <li><a href="#info-helping">{{ _('Helping <i>(Support)</i>') }}</a></li>
+      <li><a href="#info-helping">{{ _('Helping') }}</a></li>
       <li><a href="#info-localization">{{ _('Localization') }}</a></li>
       <li><a href="#info-activism">{{ _('Actvisim') }}</a></li>
       <li><a href="#info-dontknow">{{ _('I don’t know') }}</a></li>
@@ -406,8 +370,7 @@
     </div>
 
     <div class="info-content" id="info-writing">
-      {# L10n: The <i></i> acts as a supplemental label; you can omit this if your translation of the main label makes it redundant. #}
-      <h3>{{ _('Writing <i>(Documentation)</i>') }}</h3>
+      <h3>{{ _('Writing') }}</h3>
       <p>{{ _('Lend your voice to Mozilla — from blogging and social media to providing technical documents for users and developers.') }}</p>
     </div>
 
@@ -417,8 +380,7 @@
     </div>
 
     <div class="info-content" id="info-helping">
-      {# L10n: The <i></i> acts as a supplemental label; you can omit this if your translation of the main label makes it redundant. #}
-      <h3>{{ _('Helping <i>(Support)</i>') }}</h3>
+      <h3>{{ _('Helping') }}</h3>
       <p>{{ _('Provide support to users who need it and help everyone get the most out of their Mozilla products.') }}</p>
     </div>
 
@@ -438,55 +400,6 @@
     </div>
   </aside>
 
-  </section>
-
-  <section class="section volunteer-extra">
-    <div class="container">
-
-      <div class="extra-event">
-        <h3>{{ _('Next event') }}</h3>
-        <a class="event-link" href="#">
-          <div class="event-map">
-            <time class="event-date" datetime="28-09-2014"><abbr class="date-month" title="September">Sep</abbr> <span class="date-day">28</span></time>
-            <img src="{{ media('img/volunteer/mapsmall-fpo.png') }}" alt="">
-          </div>
-          <h4 class="event-title">Translating Firefox OS</h4>
-          <p class="event-info"><span class="event-venue">Caixaforum</span> &middot; <span class="event-location">Madrid, Spain</span></p>
-        </a>
-        <p class="events-all"><a href="{{ url('mozorg.contribute.events') }}">{{ _('See all events') }}</a></p>
-      </div>
-
-      <div class="extra-links">
-        <h3>{{ _('Communicate') }}</h3>
-        <ul>
-          <li><a href="#">{{ _('Mozilla communities') }}</a></li>
-          <li><a href="#">{{ _('Mailing lists') }}</a></li>
-          <li><a href="#">{{ _('IRC channels') }}</a></li>
-        </ul>
-
-        <h3>{{ _('More links') }}</h3>
-        <ul>
-          <li><a href="#">{{ _('Firefox feedback') }}</a></li>
-          <li><a href="#">{{ _('Mozilla careers') }}</a></li>
-          <li><a href="#">{{ _('Need help with Firefox?') }}</a></li>
-        </ul>
-      </div>
-
-      <div class="extra-acts">
-        <h3>{{ _('Act now') }}</h3>
-        <ul>
-          <li><a href="#">Donate to Mozilla</a></li>
-          <li><a href="#">Read our Manifesto</a></li>
-          <li><a href="#">Buy a Mozilla T-shirt</a></li>
-          <li><a href="#">Follow us on Twitter</a></li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-</main>
+</section>
 {% endblock %}
-
-{% block email_form %}{% endblock %}
 

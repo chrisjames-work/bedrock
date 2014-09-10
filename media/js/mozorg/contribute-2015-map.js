@@ -17,7 +17,7 @@
          */
         init: function () {
             // get the mapbox api token.
-            var token = $('#main-content').data('mapbox');
+            var token = $('#map').data('mapbox');
             //initialize map and center.
             map = L.mapbox.map('map').setView([28, 0], 2);
             // load mozilla custom map tiles
